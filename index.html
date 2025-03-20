@@ -55,11 +55,34 @@ https://www.tooplate.com/view/2119-gymso-fitness
                         <a href="#contact" class="nav-link smoothScroll">Contact</a>
                     </li>
                 </ul>
-
                 <ul class="social-icon ml-lg-3">
-                    <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li>
+                    <!-- Instagram Icon -->
                     <li><a href="https://www.instagram.com/dyli.easy/" class="fa fa-instagram"></a></li>
+                
+                    <!-- Mail Icon (Click to Copy) -->
+                    <li style="position: relative;">
+                        <a href="javascript:void(0);" class="fa fa-envelope" onclick="copyEmail()" title="Click to copy email"></a>
+                        <span id="copied-text" style="display: none; position: absolute; top: 30px; left: 50%; transform: translateX(-50%); font-size: 12px; color: white; background: black; padding: 3px 6px; border-radius: 4px;">Copied</span>
+                    </li>
                 </ul>
+                
+                <script>
+                    function copyEmail() {
+                        const email = "example@email.com"; // Change this to your actual email
+                        navigator.clipboard.writeText(email).then(() => {
+                            const copiedText = document.getElementById("copied-text");
+                            copiedText.style.display = "block";
+                
+                            setTimeout(() => {
+                                copiedText.style.display = "none";
+                            }, 1000); // Hides the text after 1.5 seconds
+                        }).catch(err => {
+                            console.error("Failed to copy email: ", err);
+                        });
+                    }
+                </script>
+                
+                
             </div>
 
         </div>
@@ -428,7 +451,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         <div class="modal-content">
           <div class="modal-header">
 
-            <h2 class="modal-title" id="membershipFormLabel">Membership Form</h2>
+            <h2 class="modal-title" id="membershipFormLabel">Sign up</h2>
 
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -437,21 +460,18 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
           <div class="modal-body">
             <form class="membership-form webform" role="form">
-                <input type="text" class="form-control" name="cf-name" placeholder="John Doe">
+                <input type="text" class="form-control" name="cf-name" placeholder="Name">
 
-                <input type="email" class="form-control" name="cf-email" placeholder="Johndoe@gmail.com">
+                <input type="email" class="form-control" name="cf-email" placeholder="Email">
 
-                <input type="tel" class="form-control" name="cf-phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <input type="text" class="form-control" name="cf-instagram" placeholder="Instagram @ (optional)">
 
-                <textarea class="form-control" rows="3" name="cf-message" placeholder="Additional Message"></textarea>
 
-                <button type="submit" class="form-control" id="submit-button" name="submit">Submit Button</button>
+        
 
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="signup-agree">
-                    <label class="custom-control-label text-small text-muted" for="signup-agree">I agree to the <a href="#">Terms &amp;Conditions</a>
-                    </label>
-                </div>
+                <button type="submit" class="form-control" id="submit-button" name="submit">Submit</button>
+
+                <p class="text-muted small">By sharing your email, you agree to receive updates and exclusive offers from us.</p>
             </form>
           </div>
 
