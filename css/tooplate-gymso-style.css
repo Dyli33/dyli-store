@@ -7,6 +7,13 @@ https://www.tooplate.com/view/2119-gymso-fitness
 */
 
 @font-face {
+  font-family: 'Streetsoul';
+  src: url('../fonts/Street-soul.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Adrip1';
   src: url('../fonts/adrip1.ttf') format('truetype');
   font-weight: normal;
@@ -318,15 +325,15 @@ p, h1, h2, h3, h4, h5, h6 {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
 .white-text {
   color: white !important; /* Ensures text is white */
   font-size: 26px; /* Matches navbar-brand size */
-  font-weight: var(--font-weight-bold); /* Matches navbar-brand weight */
-  font-family: inherit; /* Uses the same font as navbar-brand */
+  font-weight: 700; /* Bold weight */
+  font-family: 'Plain', sans-serif; /* Uses the same font as navbar-brand */
   letter-spacing: 12px; /* Adjust spacing as needed */
-  text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.5); /* Adds extra depth and boldness */
+
 }
+
 
 .top-black-bar {
   width: 100%;
@@ -457,20 +464,7 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--gray-color);
   }
 
-  .class-price {
-    background: var(--primary-color);
-    border-radius: var(--border-radius-large);
-    color: var(--white-color);
-    font-weight: var(--font-weight-bold);
-    display: block;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 3.5rem;
-    height: 3.5rem;
-    line-height: 3.5rem;
-    text-align: center;
-  }
+
 
 
   /*---------------------------------------
