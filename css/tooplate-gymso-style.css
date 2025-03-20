@@ -633,24 +633,31 @@ p, h1, h2, h3, h4, h5, h6 {
   -----------------------------------------*/
 
   .site-footer {
-    border-top: 1px solid #efebeb;
+    background-color: #171819; /* Set background color to black */
+    color: white; /* Set text color to white */
+    border-top: 1px solid #171819;
     padding: 3rem 0;
   }
-
+  
   .site-footer a {
-    color: var(--p-color);
+    color: white; /* Set footer links to white */
     font-weight: var(--font-weight-light);
   }
-
+  
   .site-footer p {
-    font-size: var(--base-font-size);
+    color: white; /* Ensure the text is white */
   }
-
+  
   .contact .fa,
   .site-footer .fa {
-    color: var(--primary-color);
+    color: white; /* Set social icons to white */
   }
-
+  
+  .site-footer a:hover,
+  .site-footer .fa:hover {
+    color: var(--primary-color); /* Keep hover color if needed */
+  }
+  
 
   /*---------------------------------------
      SOCIAL ICON              
