@@ -131,17 +131,8 @@ https://www.tooplate.com/view/2119-gymso-fitness
                      <div class="about-working-hours">
                           <div>
 
-                                <h2 class="mb-4 text-white" data-aos="fade-up" data-aos-delay="500">Currently</h2>
-
-                               <strong class="d-block" data-aos="fade-up" data-aos-delay="600">Sunday : Closed</strong>
-
-                               <strong class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">Monday - Friday</strong>
-
-                                <p data-aos="fade-up" data-aos-delay="800">7:00 AM - 10:00 PM</p>
-
-                                <strong class="mt-3 d-block" data-aos="fade-up" data-aos-delay="700">Saturday</strong>
-
-                                <p data-aos="fade-up" data-aos-delay="800">6:00 AM - 4:00 PM</p>
+                            <h3 class="mt-4 text-white" id="producers-count" data-aos="fade-up" data-aos-delay="900"></h3>
+                            <p class="producers-count" data-aos="fade-up" data-aos-delay="1000">Are part of our community</p>
                                </div>
                           </div>
                      </div>
@@ -151,7 +142,57 @@ https://www.tooplate.com/view/2119-gymso-fitness
         </div>
     </section>
 
+    <script>
+        // Function to get the stored producers count and the last update time
+function getProducersData() {
+    let producersCount = localStorage.getItem('producersCount');
+    let lastUpdate = localStorage.getItem('lastUpdate');
 
+    if (producersCount === null || lastUpdate === null) {
+        producersCount = 1; // Start from 1 if no value is found
+        lastUpdate = new Date().getTime(); // Store the current time as the last update time
+    } else {
+        producersCount = parseInt(producersCount);
+        lastUpdate = parseInt(lastUpdate);
+    }
+
+    return { producersCount, lastUpdate };
+}
+
+// Function to update the producers count
+function updateProducersCount() {
+    const currentTime = new Date().getTime();
+    const { producersCount, lastUpdate } = getProducersData();
+
+    // Check if an hour has passed (3600000 milliseconds = 1 hour)
+    if (currentTime - lastUpdate >= 3600000) {
+        // Increment the number by 1 (if it's less than or equal to 10)
+        let newProducersCount = producersCount + 1;
+        if (newProducersCount > 10) {
+            newProducersCount = 1; // Reset to 1 after reaching 10
+        }
+
+        // Save the new producers count and the current time to localStorage
+        localStorage.setItem('producersCount', newProducersCount);
+        localStorage.setItem('lastUpdate', currentTime.toString());
+
+        // Update the producers count on the page with "Currently"
+        document.getElementById('producers-count').innerHTML = `Currently, ${newProducersCount} Producers`;
+    } else {
+        // If an hour hasn't passed, simply display the stored count with "Currently"
+        document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
+    }
+}
+
+// Function to run once the page loads
+window.onload = function() {
+    updateProducersCount(); // Call the function to update the count
+};
+
+// Optionally, use setInterval to run the update every minute (to check for the 1-hour condition)
+setInterval(updateProducersCount, 60000); // Check and update the count every minute
+
+    </script>
 
 
      <!-- CLASS -->

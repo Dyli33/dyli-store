@@ -90,6 +90,10 @@ https://www.tooplate.com/view/2119-gymso-fitness
     line-height: normal;
   }
 
+  .producers-count {
+    font-size: 25px; /* Adjust this value as needed */
+}
+
   h1 {
     font-size: var(--h1-font-size);
     font-weight: var(--font-weight-bold);
