@@ -160,15 +160,14 @@ https://www.tooplate.com/view/2119-gymso-fitness
     box-shadow: none;
   }
 
-  .custom-btn.bordered:hover,
-  .custom-btn.bordered:focus,
-
-  .custom-btn.bg-color:hover,
-  .custom-btn.bg-color:focus {
-    background: var(--white-color);
+ .custom-btn.bordered:hover,
+.custom-btn.bordered:focus,
+.custom-btn.bg-color:hover,
+.custom-btn.bg-color:focus {
+    background: black; /* Change background to black */
     border-color: transparent;
-    color: var(--primary-color);
-  }
+    color: var(--white-color); /* Keep text white */
+}
 
   .bordered {
     border: 1px solid var(--primary-color);
