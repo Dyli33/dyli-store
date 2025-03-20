@@ -309,8 +309,8 @@ p, h1, h2, h3, h4, h5, h6 {
     animation: wave 6s infinite linear;
 
     /* Softer glow effect */
-    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5),
-                 0px 0px 10px rgba(255, 255, 255, 0.3);
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5),
+                 0px 0px 0px rgba(255, 255, 255, 0.3);
 }
 
 @keyframes wave {
@@ -321,11 +321,11 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .white-text {
   color: white !important; /* Ensures text is white */
-  font-size: 30px; /* Matches navbar-brand size */
+  font-size: 26px; /* Matches navbar-brand size */
   font-weight: var(--font-weight-bold); /* Matches navbar-brand weight */
   font-family: inherit; /* Uses the same font as navbar-brand */
   letter-spacing: 12px; /* Adjust spacing as needed */
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* Adds extra depth and boldness */
+  text-shadow: 4px 3px 4px rgba(0, 0, 0, 0.5); /* Adds extra depth and boldness */
 }
 
 .top-black-bar {
