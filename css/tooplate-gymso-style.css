@@ -178,6 +178,22 @@ https://www.tooplate.com/view/2119-gymso-fitness
     background: var(--primary-color);
     color: var(--white-color);
   }
+.wave-text {
+    font-size: 3rem;
+    font-weight: bold;
+    display: inline-block;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wave 3s infinite ease-in-out;
+}
+
+@keyframes wave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 
 
@@ -274,23 +290,46 @@ https://www.tooplate.com/view/2119-gymso-fitness
   }
   
 
-
-.welcome-text {
-     font-family: 'Adrip1', sans-serif;
+  .welcome-text {
+    font-family: 'Adrip1', sans-serif;
     font-size: 150px;
     font-weight: bold;
-    color: #8e8e8e; /* Make text transparent */
     letter-spacing: 2px;
+    background: linear-gradient(90deg, #ffffff, #858585, #ffffff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wave 6s infinite linear;
+
+    /* Softer glow effect */
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5),
+                 0px 0px 10px rgba(255, 255, 255, 0.3);
 }
 
-  .navbar-brand {
-    color: var(--white-color);
-    font-size: var(--h3-font-size);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 10px;
-    line-height: normal;
-    padding-top: 0;
-  }
+@keyframes wave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.white-text {
+  color: white !important; /* Ensures text is white */
+  font-size: 30px; /* Matches navbar-brand size */
+  font-weight: var(--font-weight-bold); /* Matches navbar-brand weight */
+  font-family: inherit; /* Uses the same font as navbar-brand */
+  letter-spacing: 12px; /* Adjust spacing as needed */
+}
+
+.top-black-bar {
+  width: 100%;
+  height: 40px; /* Adjust height */
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Ensure it's on top */
+}
+
 
   .nav-item .nav-link {
     display: block;
