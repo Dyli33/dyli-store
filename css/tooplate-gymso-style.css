@@ -195,7 +195,14 @@ https://www.tooplate.com/view/2119-gymso-fitness
     100% { background-position: 0% 50%; }
 }
 
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+p, h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+}
 
   /*---------------------------------------
      GENERAL               
@@ -318,6 +325,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
   font-weight: var(--font-weight-bold); /* Matches navbar-brand weight */
   font-family: inherit; /* Uses the same font as navbar-brand */
   letter-spacing: 12px; /* Adjust spacing as needed */
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* Adds extra depth and boldness */
 }
 
 .top-black-bar {
@@ -724,3 +732,19 @@ https://www.tooplate.com/view/2119-gymso-fitness
       display: block;
     }
   }
+
+  html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+}
+
+/* Safari-specific fix */
+@supports (-webkit-touch-callout: none) {
+    body {
+        -webkit-font-smoothing: subpixel-antialiased !important;
+    }
+}
