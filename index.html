@@ -133,56 +133,49 @@ https://www.tooplate.com/view/2119-gymso-fitness
     </section>
 
     <script>
-        // Function to get the stored producers count and the last update time
-function getProducersData() {
-    let producersCount = localStorage.getItem('producersCount');
-    let lastUpdate = localStorage.getItem('lastUpdate');
-
-    if (producersCount === null || lastUpdate === null) {
-        producersCount = 1; // Start from 1 if no value is found
-        lastUpdate = new Date().getTime(); // Store the current time as the last update time
-    } else {
-        producersCount = parseInt(producersCount);
-        lastUpdate = parseInt(lastUpdate);
-    }
-
-    return { producersCount, lastUpdate };
-}
-
-// Function to update the producers count
-function updateProducersCount() {
-    const currentTime = new Date().getTime();
-    const { producersCount, lastUpdate } = getProducersData();
-
-    // Check if an hour has passed (3600000 milliseconds = 1 hour)
-    if (currentTime - lastUpdate >= 3600000) {
-        // Increment the number by 1 (if it's less than or equal to 10)
-        let newProducersCount = producersCount + 1;
-        if (newProducersCount > 10) {
-            newProducersCount = 1; // Reset to 1 after reaching 10
+        // Function to get the stored producers count
+        function getProducersData() {
+            let producersCount = localStorage.getItem('producersCount');
+            if (producersCount === null) {
+                producersCount = 1; // Start from 1 if no value is found
+            } else {
+                producersCount = parseInt(producersCount);
+            }
+            return producersCount;
         }
-
-        // Save the new producers count and the current time to localStorage
-        localStorage.setItem('producersCount', newProducersCount);
-        localStorage.setItem('lastUpdate', currentTime.toString());
-
-        // Update the producers count on the page with "Currently"
-        document.getElementById('producers-count').innerHTML = `Currently, ${newProducersCount} Producers`;
-    } else {
-        // If an hour hasn't passed, simply display the stored count with "Currently"
-        document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
-    }
-}
-
-// Function to run once the page loads
-window.onload = function() {
-    updateProducersCount(); // Call the function to update the count
-};
-
-// Optionally, use setInterval to run the update every minute (to check for the 1-hour condition)
-setInterval(updateProducersCount, 60000); // Check and update the count every minute
-
+    
+        // Function to update the producers count when the form is submitted
+        function updateProducersCount() {
+            let producersCount = getProducersData();
+            producersCount += 1; // Increment the count
+    
+            // Save the updated count to localStorage
+            localStorage.setItem('producersCount', producersCount);
+    
+            // Update the producers count on the page
+            document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
+        }
+    
+        // Function to display the current producers count on page load
+        window.onload = function () {
+            let producersCount = getProducersData();
+            document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
+    
+            // Attach event listener to the form submit button
+            document.querySelector(".membership-form").addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent actual form submission (remove if backend processing exists)
+                updateProducersCount(); // Update producer count
+                
+                // Close the modal after submission
+                $('#membershipForm').modal('hide');
+    
+                // Optionally, reset the form fields
+                this.reset();
+            });
+        };
     </script>
+    
+    
 
 
      <!-- CLASS -->
