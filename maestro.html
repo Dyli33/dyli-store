@@ -3,23 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loopkit vol.1 Maestro</title>
-    <link rel="stylesheet" href="css/tooplate-gymso-style.css"> <!-- Include your CSS files -->
+    <title>D Y L I</title>
+    
+    <!-- Include your CSS files -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- Assuming you use bootstrap for your styling -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/tooplate-gymso-style.css"> <!-- Custom styling -->
+    <link rel="icon" type="image/png" href="images/favicon.ico.png">
+
 </head>
-<body>
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
 
-    <header>
-        <h1>Loopkit vol.1 Maestro</h1>
-    </header>
+    <!-- MENU BAR (same as the main page) -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #000; padding: 15px 0;"> <!-- Adjusted padding here -->
+        <div class="container">
+            <a class="white-text" href="index.html">dylieasy</a>
 
-    <section>
-        <h2>Details about Loopkit vol.1 Maestro</h2>
-        <p>Information about the Loopkit vol.1 Maestro here...</p>
-    </section>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <footer>
-        <p>&copy; 2025 DyliEasy</p>
-    </footer>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link smoothScroll">Home</a>
+                   
+                </ul>
+                <ul class="social-icon ml-lg-3">
+                    <li><a href="https://www.instagram.com/dyli.easy/" class="fa fa-instagram"></a></li>
+                    <li><a href="javascript:void(0);" class="fa fa-envelope"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Hero Section for Maestro -->
+<section class="hero d-flex flex-column justify-content-center align-items-center" id="home" style="background-image: url('images/maestro-background.jpg'); background-size: cover; background-position: center; height: 300px; text-align: center;">
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <h1 class="hero-title" data-aos="fade-up">Loopkit vol.1 Maestro</h1>
+        <p class="hero-description" data-aos="fade-up" data-aos-delay="500">Dark, Synth, Gritty, Atmospheric</p>
+    </div>
+</section>
+
+<section class="details-section">
+    <div class="container">
+        <div class="row">
+            <!-- Description on the left -->
+            <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up">
+                <h2>Details about Loopkit vol.1 Maestro</h2>
+                <p data-aos="fade-up" data-aos-delay="400">This pack contains 15 placement-ready loops in the style of Playboy Carti, Future, and UFO361. Perfect for producers looking to add gritty, atmospheric, and synth-heavy vibes to their tracks.</p>
+                <ul>
+                    <li>15 high-quality loops</li>
+                    <li>Compatible with all DAWs</li>
+                    <li>Royalty-free sounds</li>
+                    <li>Perfect for trap, hip-hop, and modern beats</li>
+                </ul>
+            </div>
+
+            <!-- Add to Cart Button on the right -->
+            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center" data-aos="fade-up">
+                <button class="btn add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- AUDIO PREVIEWS Section -->
+<section class="audio-previews section" id="audio-previews" style="background-color: #171819; color: white;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 text-center mb-5">
+                <h2>Preview the loops</h2>
+                <p data-aos="fade-up" data-aos-delay="400">Check if they suit your style</p>
+            </div>
+
+            <!-- Audio Loop 1 -->
+            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+                <div class="audio-preview" style="text-align: center; background-color: #171819;">
+                    <audio controls>
+                        <source src="audio/loop1.mp3" type="audio/mpeg">
+                        <source src="audio/loop1.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p>Loop 1</p>
+                </div>
+            </div>
+
+            <!-- Audio Loop 2 -->
+            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                <div class="audio-preview" style="text-align: center; background-color: #171819;">
+                    <audio controls>
+                        <source src="audio/loop2.mp3" type="audio/mpeg">
+                        <source src="audio/loop2.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p>Loop 2</p>
+                </div>
+            </div>
+
+            <!-- Audio Loop 3 -->
+            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
+                <div class="audio-preview" style="text-align: center; background-color: #171819;">
+                    <audio controls>
+                        <source src="audio/loop3.mp3" type="audio/mpeg">
+                        <source src="audio/loop3.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p>Loop 3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+ <!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row justify-content-center">
+        
+            <!-- Copyright Section (Centered) -->
+            <div class="col-lg-4 col-md-5 text-center">
+                <p class="copyright-text">&copy; dyli.easy</p>
+            </div>
+
+            <!-- Contact Section (Centered) -->
+            <div class="col-lg-4 col-md-5 text-center">
+                <p>
+                    <i class="fa fa-envelope-o mr-1"></i>
+                    <a href="mailto:your-email@example.com">Placeholder Mail</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/custom.js"></script>
 
 </body>
 </html>

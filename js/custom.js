@@ -14,6 +14,7 @@
     });
 
 
+    
     // SMOOTHSCROLL NAVBAR
     $(function() {
       $('.navbar a, .hero-text a').on('click', function(event) {

@@ -752,4 +752,100 @@ p, h1, h2, h3, h4, h5, h6 {
     body {
         -webkit-font-smoothing: subpixel-antialiased !important;
     }
+  }
+
+/* Ensure the image and overlay are positioned correctly */
+.class-thumb {
+  position: relative; /* Position for the image and overlay */
+  display: inline-block; /* Ensure it behaves like an inline block */
+  box-shadow: none; /* No shadow by default */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+}
+
+/* Hover effect to add shadow when the image is hovered */
+.class-thumb:hover {
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4); /* Add visible shadow when hovered */
+}
+
+/* Overlay styling using ::before pseudo-element */
+.class-thumb::before {
+  content: ''; /* Empty content to create the pseudo-element */
+  position: absolute; /* Position it absolutely within the container */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* 80% transparent black */
+  opacity: 0; /* Initially hidden */
+  z-index: -1; /* This ensures it stays behind the image */
+  transition: opacity 0.3s ease; /* Smooth transition for fading */
+}
+
+/* Show the overlay when the image is hovered */
+.class-thumb:hover::before {
+  opacity: 1; /* Show the overlay when hovering */
+}
+
+/* Ensure the image is always in front of the overlay */
+.class-thumb img {
+  display: block; /* Ensure the image is displayed as a block */
+  width: 100%; /* Make image fill the container */
+  height: 100%; /* Ensure the image is sized properly */
+  transition: all 0.3s ease; /* Smooth transition for brightness effect */
+  z-index: 1; /* Ensure the image is in front of the overlay */
+}
+
+.hero-title {
+  font-size: 78px;  /* Makes the title text bigger */
+  color: white;     /* Makes the title text white */
+  font-weight: bold; /* Makes the title bold for emphasis */
+}
+
+.hero-description {
+  font-size: 20px; /* Makes the description text bigger */
+  color: #cab8a4;    /* Makes the description text white */
+}
+
+
+.details-section {
+  margin-top: 50px;
+  padding: 40px 0;
+}
+
+.details-section h2 {
+  font-size: 28px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 20px;
+}
+
+.details-section p {
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  line-height: 1.5;
+}
+
+.add-to-cart-btn {
+  background-color: #ff5733; /* Custom color for the button */
+  color: white;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #d44d29; /* Darker shade for the hover effect */
+}
+
+@media (max-width: 768px) {
+  .details-section .row {
+      flex-direction: column; /* Stack the description and button on smaller screens */
+      align-items: center;
+  }
+
+  .add-to-cart-btn {
+      margin-top: 20px; /* Add some space for mobile layout */
+  }
 }
