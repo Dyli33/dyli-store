@@ -140,7 +140,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         function getProducersData() {
             let producersCount = localStorage.getItem('producersCount');
             if (producersCount === null) {
-                producersCount = 1; // Start from 1 if no value is found
+                producersCount = 136; // Start from 1 if no value is found
             } else {
                 producersCount = parseInt(producersCount);
             }
@@ -150,7 +150,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         // Function to update the producers count when the form is submitted
         function updateProducersCount() {
             let producersCount = getProducersData();
-            producersCount += 1; // Increment the count
+            producersCount += 2; // Increment the count
     
             // Save the updated count to localStorage
             localStorage.setItem('producersCount', producersCount);
