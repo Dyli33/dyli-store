@@ -826,6 +826,12 @@ p, h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
 }
 
+.details-section g {
+  font-size: 14px;
+  color: rgb(89, 89, 89);
+  line-height: 1.5;
+}
+
 .add-to-cart-btn {
   background-color: #ff5733; /* Custom color for the button */
   color: white;
@@ -852,12 +858,6 @@ p, h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.royalty-text {
-  font-size: 12px;  /* Even smaller font size */
-  color: rgb(177, 20, 20);       /* Grey text color */
-  font-weight: 400;  /* Normal font weight */
-  margin-top: 10px;  /* Adds some spacing from previous content */
-}
 
 /* Add this CSS to your style file or within a <style> tag in the HTML */
 
@@ -898,4 +898,9 @@ p, h1, h2, h3, h4, h5, h6 {
 /* To move the image vertically (up or down), adjust the 'top' value */
 .col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center img {
   top: -25px; /* Use a positive value to move the image down, negative to move up */
+}
+
+.royalty-text {
+  font-size: 14px;
+  color: grey; /* You can adjust the shade of grey if needed, like #808080 */
 }
