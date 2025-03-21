@@ -171,6 +171,8 @@ https://www.tooplate.com/view/2119-gymso-fitness
     box-shadow: none;
   }
 
+
+
  .custom-btn.bordered:hover,
 .custom-btn.bordered:focus,
 .custom-btn.bg-color:hover,
@@ -848,4 +850,52 @@ p, h1, h2, h3, h4, h5, h6 {
   .add-to-cart-btn {
       margin-top: 20px; /* Add some space for mobile layout */
   }
+}
+
+.royalty-text {
+  font-size: 12px;  /* Even smaller font size */
+  color: rgb(177, 20, 20);       /* Grey text color */
+  font-weight: 400;  /* Normal font weight */
+  margin-top: 10px;  /* Adds some spacing from previous content */
+}
+
+/* Add this CSS to your style file or within a <style> tag in the HTML */
+
+/* Styling for the image with rounded corners and shadow */
+.rounded-corner {
+  border-radius: 20px; /* Adjust the value for more/less rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a soft effect */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for interactivity */
+.rounded-corner:hover {
+  transform: scale(1.05); /* Slightly enlarge the image on hover */
+}
+
+/* Flexbox to align the image to the right side */
+.col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center {
+  justify-content: flex-end; /* Align image to the right side */
+  display: flex; 
+  align-items: center; /* Vertically center the image */
+  padding-right: 50px; /* Adjust padding to move the image more to the right */
+}
+
+/* Extra padding and margin to push the image more to the right */
+.details-section .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Image container adjustments to move the image further right */
+.col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center img {
+  margin-right: -240px; /* Adjust the margin to move the image more to the right */
+  position: relative; /* Allows top/bottom positioning */
+  top: 0px; /* Default position (adjustable) */
+}
+
+/* To move the image vertically (up or down), adjust the 'top' value */
+.col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center img {
+  top: -25px; /* Use a positive value to move the image down, negative to move up */
 }
