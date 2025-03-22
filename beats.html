@@ -110,114 +110,84 @@ https://www.tooplate.com/view/2119-gymso-fitness
 </section>
 
 
-<section class="feature" id="feature">
+<!-- BEATSTARS WIDGET Section -->
+<section class="beatstars-widget section" id="beatstars-widget">
     <div class="container">
         <div class="row">
+            <!-- Filter Buttons -->
+            <div class="col-lg-12 col-12 text-center mb-5">
+                <h2>Explore My Beats</h2>
+                <p>Select a category to filter the beats</p>
 
-            <div class="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
-                <h2 class="mb-3 text-white" data-aos="fade-up">Let’s make some fire together!🔥</h2>
-
-                <h6 class="mb-4 text-white" data-aos="fade-up">Want me to hook you up with fresh loops every week?</h6>
-
-                <p data-aos="fade-up" data-aos-delay="200">Sign up to join the community of producers I work with. Get exclusive loops, collab opportunities, and more!</p>
-
-                <a href="#" class="btn custom-btn bg-color mt-3"  data-aos-delay="100" data-toggle="modal" data-target="#membershipForm">Sign up</a>
+                <!-- Buttons to filter the beats -->
+                <div class="filter-buttons">
+                    <button class="filter-btn" id="darkBtn">Dark</button>
+                    <button class="filter-btn" id="emotionalBtn">Emotional</button>
+                    <button class="filter-btn" id="synthBtn">Synth</button>
+                    <button class="filter-btn" id="epicBtn">Epic</button>
+                    <button class="filter-btn" id="otherBtn">Other</button>
+                </div>
             </div>
 
-            <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
-                 <div class="about-working-hours">
-                      <div>
-                        <h3 class="mt-4 text-white" id="producers-count" data-aos="fade-up" data-aos-delay="900"></h3>
-                        <p class="producers-count" data-aos="fade-up" data-aos-delay="1000">Are getting their hands on free loops</p>
-                           </div>
-                      </div>
-                 </div>
+            <!-- BeatStars Widget -->
+            <div class="col-lg-12 col-12 text-center">
+                <!-- Replace this iframe with your actual BeatStars widget code -->
+                <iframe src="https://www.beatstars.com/embed/widget?url=https://www.beatstars.com/dylieasy" width="100%" height="450" frameborder="0"></iframe>
             </div>
-
         </div>
     </div>
 </section>
 
 <script>
-    // Function to get the stored producers count
-    function getProducersData() {
-        let producersCount = localStorage.getItem('producersCount');
+    // JavaScript to filter and show beats based on category selection
+    const darkBtn = document.getElementById("darkBtn");
+    const emotionalBtn = document.getElementById("emotionalBtn");
+    const synthBtn = document.getElementById("synthBtn");
+    const epicBtn = document.getElementById("epicBtn");
+    const otherBtn = document.getElementById("otherBtn");
+
+    // Function to filter beats (this could be an actual filtering mechanism in your system)
+    darkBtn.addEventListener('click', () => filterBeats('dark'));
+    emotionalBtn.addEventListener('click', () => filterBeats('emotional'));
+    synthBtn.addEventListener('click', () => filterBeats('synth'));
+    epicBtn.addEventListener('click', () => filterBeats('epic'));
+    otherBtn.addEventListener('click', () => filterBeats('other'));
+
+    function filterBeats(category) {
+        // For the example, this is just a simple console log, 
+        // replace with actual filtering logic
+        console.log(`Filtering beats by ${category}`);
         
-        // If no producers count exists in localStorage, set it to 136 (starting value)
-        if (producersCount === null) {
-            producersCount = 136;  // Default starting value
-            localStorage.setItem('producersCount', producersCount);  // Save it to localStorage
-        } else {
-            producersCount = parseInt(producersCount);  // If it exists, parse it to integer
-        }
-        
-        return producersCount;
+        // Here you can also adjust the embedded widget or load a specific category
+        // You could modify the widget URL dynamically based on category
+        // Example (not implemented in this code):
+        // document.querySelector('iframe').src = "your_filtered_widget_url";
     }
-
-    // Function to get the last update timestamp
-    function getLastUpdateTimestamp() {
-        let lastUpdate = localStorage.getItem('lastUpdate');
-        if (lastUpdate === null) {
-            lastUpdate = Date.now(); // If no timestamp, set it to the current time
-            localStorage.setItem('lastUpdate', lastUpdate); // Save it to localStorage
-        } else {
-            lastUpdate = parseInt(lastUpdate);
-        }
-        return lastUpdate;
-    }
-
-    // Function to check if an hour has passed and update the producer count
-    function checkAndUpdateProducerCount() {
-        let lastUpdate = getLastUpdateTimestamp();
-        let currentTime = Date.now();
-        
-        // Check if 1 hour (3600000 milliseconds) has passed since last update
-        if (currentTime - lastUpdate >= 3600000) {
-            let producersCount = getProducersData();
-            producersCount += 1; // Increment by 1 every hour
-
-            // Save the updated count and current timestamp
-            localStorage.setItem('producersCount', producersCount);
-            localStorage.setItem('lastUpdate', currentTime); // Update the timestamp
-
-            // Update the producers count on the page
-            document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
-        }
-    }
-
-    // Function to update the producers count when the form is submitted
-    function updateProducersCount() {
-        let producersCount = getProducersData();
-        producersCount += 1; // Increment by 2 when the form is submitted
-
-        // Save the updated count to localStorage
-        localStorage.setItem('producersCount', producersCount);
-
-        // Update the producers count on the page
-        document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
-    }
-
-    // Function to display the current producers count on page load
-    window.onload = function () {
-        let producersCount = getProducersData(); // Get the current count from localStorage
-        document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
-
-        // Check and update producer count if 1 hour has passed
-        checkAndUpdateProducerCount();
-
-        // Attach event listener to the form submit button
-        document.querySelector(".membership-form").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent actual form submission (remove if backend processing exists)
-            updateProducersCount(); // Update producer count
-
-            // Close the modal after submission (Bootstrap modal hide)
-            $('#membershipForm').modal('hide');
-
-            // Optionally, reset the form fields
-            this.reset();
-        });
-    };
 </script>
+
+<!-- Styles for Filter Buttons -->
+<style>
+    .filter-buttons {
+        margin-bottom: 30px;
+    }
+
+    .filter-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 5px;
+        cursor: pointer;
+        border: none;
+        background-color: #333;
+        color: rgb(0, 0, 0);
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .filter-btn:hover {
+        background-color: #f1a545;
+    }
+</style>
+
 
      <!-- CLASS -->
 <section class="class section" id="class">
