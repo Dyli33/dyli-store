@@ -910,3 +910,7 @@ p, h1, h2, h3, h4, h5, h6 {
   background-color: #333; /* Match the menu bar color */
   color: white; /* Ensure text is visible on the dark background */
 }
+
+#contact {
+    margin-top: 30px; /* Adjust this value to your preference */
+}
