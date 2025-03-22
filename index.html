@@ -292,43 +292,46 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-
-        <div class="modal-content">
-          <div class="modal-header">
-
-            <h2 class="modal-title" id="membershipFormLabel">Sign up</h2>
-
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <div class="modal-body">
-            <form class="membership-form webform" role="form">
-                <input type="text" class="form-control" name="cf-name" placeholder="Name">
-
-                <input type="email" class="form-control" name="cf-email" placeholder="Email">
-
-                <input type="text" class="form-control" name="cf-instagram" placeholder="Instagram @ (optional)">
-
-
-        
-
-                <button type="submit" class="form-control" id="submit-button" name="submit">Submit</button>
-
-                <p class="text-muted small">By sharing your email, you agree to receive updates and exclusive offers from us.</p>
-            </form>
-          </div>
-
-          <div class="modal-footer"></div>
-
+   <!-- Modal -->
+<div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="membershipFormLabel">Sign up</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+  
+        <div class="modal-body">
+          <form class="membership-form webform" id="signupForm">
+            <input type="text" class="form-control" id="name" name="cf-name" placeholder="Name" required>
+            <input type="email" class="form-control" id="email" name="cf-email" placeholder="Email" required>
+            <input type="text" class="form-control" name="cf-instagram" placeholder="Instagram @ (optional)">
+            
+            <button type="submit" class="form-control" id="submit-button" name="submit">Submit</button>
+            
+            <p class="text-muted small">By sharing your email, you agree to receive updates and exclusive offers from us.</p>
+          </form>
+        </div>
+  
+        <div class="modal-footer"></div>
       </div>
     </div>
-
+  </div>
+  
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+  
+      if (name === "" || email === "") {
+        event.preventDefault(); // Prevent form submission
+        alert("Please fill in both Name and Email before submitting.");
+      }
+    });
+  </script>
+  
      <!-- SCRIPTS -->
      <script src="js/jquery.min.js"></script>
      <script src="js/bootstrap.min.js"></script>
