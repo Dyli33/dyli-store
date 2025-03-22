@@ -1,0 +1,907 @@
+/*
+
+Tooplate 2119 Gymso Fitness
+
+https://www.tooplate.com/view/2119-gymso-fitness
+
+*/
+
+@font-face {
+    font-family: 'Streetsoul';
+    src: url('../fonts/Street-soul.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Adrip1';
+    src: url('../fonts/adrip1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+    @font-face {
+        font-family: 'Plain';
+        src: url('../fonts/Plain-Regular.woff2') format('woff2'),
+            url('../fonts/Plain-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+  
+    @font-face {
+        font-family: 'Plain';
+        src: url('../fonts/Plain-Light.woff2') format('woff2'),
+            url('../fonts/Plain-Light.woff') format('woff');
+        font-weight: 300;
+        font-style: normal;
+    }
+  
+    @font-face {
+        font-family: 'Plain';
+        src: url('../fonts/Plain-Bold.woff2') format('woff2'),
+            url('../fonts/Plain-Bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+  
+    :root {
+      --primary-color:        #f13a11;
+      --white-color:          #ffffff;
+      --dark-color:           #171819;
+      --about-bg-color:       #f9f9f9;
+  
+      --gray-color:           #909090;
+      --link-color:           #404040;
+      --p-color:              #666262;
+  
+      --base-font-family:     'Plain', sans-serif;
+      --font-weight-bold:     bold;
+      --font-weight-normal:   normal;
+      --font-weight-light:    300;
+      --font-weight-thin:     100;
+  
+      --h1-font-size:         48px;
+      --h2-font-size:         36px;
+      --h3-font-size:         28px;
+      --h4-font-size:         24px;
+      --h5-font-size:         22px;
+      --h6-font-size:         22px;
+      --p-font-size:          18px;
+      --base-font-size:       16px;
+      --menu-font-size:       14px;
+  
+      --border-radius-large:  100%;
+      --border-radius-small:  2px;
+    }
+  
+  
+    body {
+      background: #171819;
+      font-family: var(--base-font-family);
+    }
+  
+  
+    /*---------------------------------------
+       TYPOGRAPHY              
+    -----------------------------------------*/
+  
+    h1,h2,h3,h4,h5,h6 {
+      font-weight: var(--font-weight-thin);
+      line-height: normal;
+    }
+  
+    .producers-count {
+      font-size: 25px; /* Adjust this value as needed */
+  }
+  
+    h1 {
+      font-size: var(--h1-font-size);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin: 20px 0;
+    }
+  
+    h2 {
+      font-size: var(--h2-font-size);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: -2px;
+    }
+  
+    h3 {
+      font-size: var(--h3-font-size);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: -1px;
+      margin: 0;
+    }
+  
+    h4 {
+      font-size: var(--h4-font-size);
+    }
+  
+    h5 {
+      font-size: var(--h5-font-size);
+    }
+  
+    h6 {
+      color: var(--gray-color);
+      font-size: var(--h6-font-size);
+      line-height: inherit;
+      margin: 0;
+    }
+  
+    p {
+      color: var(--p-color);
+      font-size: var(--p-font-size);
+      font-weight: var(--font-weight-light);
+      line-height: 1.5em;
+    }
+  
+    b, 
+    strong {
+      font-weight: var(--font-weight-bold);
+      letter-spacing: 0;
+    }
+  
+    .section {
+      padding: 7rem 0;
+    }
+  
+  
+    /* BUTTON */
+  
+    .custom-btn {
+      background: transparent;
+      border-radius: var(--border-radius-small);
+      padding: 14px 24px;
+      color: var(--white-color);
+      font-size: var(--menu-font-size);
+      font-weight: var(--font-weight-normal);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+  
+    .custom-btn:hover {
+      color: var(--primary-color);
+    }
+  
+    .custom-btn:focus {
+      box-shadow: none;
+    }
+  
+  
+  
+   .custom-btn.bordered:hover,
+  .custom-btn.bordered:focus,
+  .custom-btn.bg-color:hover,
+  .custom-btn.bg-color:focus {
+      background: black; /* Change background to black */
+      border-color: transparent;
+      color: var(--white-color); /* Keep text white */
+  }
+  
+    .bordered {
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+  
+    .bg-color {
+      background: var(--primary-color);
+      color: var(--white-color);
+    }
+  .wave-text {
+      font-size: 3rem;
+      font-weight: bold;
+      display: inline-block;
+      background: linear-gradient(90deg, #ff00ff, #00ffff);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: wave 3s infinite ease-in-out;
+  }
+  
+  @keyframes wave {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+  }
+  
+  html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+  }
+  
+    /*---------------------------------------
+       GENERAL               
+    -----------------------------------------*/
+  
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+  
+    *::before,
+    *::after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+  
+    a {
+      color: var(--link-color);
+      font-weight: normal;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+  
+    a:hover, 
+    a:active, 
+    a:focus {
+      color: var(--primary-color);
+      outline: none;
+      text-decoration: none;
+    }
+  
+  
+    /* BG OVERLAY */
+  
+    .bg-overlay {
+      background: var(--dark-color);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.55;
+    }
+  
+  
+    /*---------------------------------------
+       MODAL              
+    -----------------------------------------*/
+  
+    .modal-content {
+      padding: 2rem 3rem;
+    }
+  
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+      border: 0;
+      padding: 0;
+    }
+  
+    .membership-form a {
+      color: var(--primary-color);
+    }
+  
+  
+    /*---------------------------------------
+      FEATURE          
+    -----------------------------------------*/
+  
+    .feature {
+      background: var(--dark-color);
+      padding: 5rem 0;
+    }
+  
+  
+    /*---------------------------------------
+       MENU             
+    -----------------------------------------*/
+  
+    .navbar {
+      background: var(--dark-color);
+      padding: 1rem;
+    }
+  
+    .navbar-expand-lg .navbar-nav .nav-link {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    
+  
+    .welcome-text {
+      font-family: 'Adrip1', sans-serif;
+      font-size: 150px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ffffff, #858585, #ffffff);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: wave 6s infinite linear;
+  
+      /* Softer glow effect */
+      text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5),
+                   0px 0px 0px rgba(255, 255, 255, 0.3);
+  }
+  
+  @keyframes wave {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+  }
+  .white-text {
+    color: white !important; /* Ensures text is white */
+    font-size: 26px; /* Matches navbar-brand size */
+    font-weight: 700; /* Bold weight */
+    font-family: 'Plain', sans-serif; /* Uses the same font as navbar-brand */
+    letter-spacing: 12px; /* Adjust spacing as needed */
+  
+  }
+  
+  
+  .top-black-bar {
+    width: 100%;
+    height: 40px; /* Adjust height */
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* Ensure it's on top */
+  }
+  
+  
+    .nav-item .nav-link {
+      display: block;
+      color: var(--white-color);
+      font-size: var(--menu-font-size);
+      font-weight: var(--font-weight-normal);
+      text-transform: uppercase;
+      padding: 2px 6px;
+    }
+  
+    .nav-item .nav-link.active,
+    .nav-item .nav-link:hover {
+      color: var(--primary-color);
+    }
+  
+    .navbar .social-icon li a {
+      color: var(--white-color);
+    }
+  
+    .navbar-toggler {
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      margin: 0 10px 0 0;
+      width: 30px;
+      height: 35px;
+      outline: none;
+    }
+  
+    .navbar-toggler:focus {
+      outline: none;
+    }
+  
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+      background: transparent;
+    }
+  
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before,
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+      transition: top 300ms 50ms ease, -webkit-transform 300ms 350ms ease;
+      transition: top 300ms 50ms ease, transform 300ms 350ms ease;
+      transition: top 300ms 50ms ease, transform 300ms 350ms ease, -webkit-transform 300ms 350ms ease;
+      top: 0;
+    }
+  
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+      transform: rotate(45deg);
+    }
+  
+    .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+      transform: rotate(-45deg);
+    }
+  
+    .navbar-toggler .navbar-toggler-icon {
+      background: var(--primary-color);
+      transition: background 10ms 300ms ease;
+      display: block;
+      width: 30px;
+      height: 2px;
+      position: relative;
+    }
+  
+    .navbar-toggler .navbar-toggler-icon::before,
+    .navbar-toggler .navbar-toggler-icon::after {
+      transition: top 300ms 350ms ease, -webkit-transform 300ms 50ms ease;
+      transition: top 300ms 350ms ease, transform 300ms 50ms ease;
+      transition: top 300ms 350ms ease, transform 300ms 50ms ease, -webkit-transform 300ms 50ms ease;
+      position: absolute;
+      right: 0;
+      left: 0;
+      background: var(--primary-color);
+      width: 30px;
+      height: 2px;
+      content: '';
+    }
+  
+    .navbar-toggler .navbar-toggler-icon::before {
+      top: -8px;
+    }
+  
+    .navbar-toggler .navbar-toggler-icon::after {
+      top: 8px;
+    }
+  
+    /*---------------------------------------
+       HERO              
+    -----------------------------------------*/
+  
+    .hero {
+      background-image: url('../images/hero-bg.jpg');
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+      vertical-align: middle;
+      min-height: 100vh;
+      position: relative;
+    }
+  
+  
+    /*---------------------------------------
+       CLASS               
+    -----------------------------------------*/
+  
+    .class-info {
+      background: var(--white-color);
+      box-shadow: 6px 0 38px rgba(20,20,20,0.10);
+      border-radius: 0 0 2px 2px;
+      padding: 1rem 2rem;
+      position: relative;
+    }
+  
+    .class-info img {
+      border-radius: 2px 2px 0 0;
+    }
+  
+    .class-info strong {
+      color: var(--gray-color);
+    }
+  
+  
+  
+  
+    /*---------------------------------------
+       SCHEDULE             
+    -----------------------------------------*/
+  
+    .schedule {
+      background: var(--dark-color);
+    }
+  
+    .schedule-table {
+      display: table;
+      border: 0;
+      text-align: center;
+    }
+  
+    .schedule-table strong,
+    .schedule-table span {
+      display: block;
+      text-align: center;
+    }
+  
+    .schedule-table strong {
+      color: var(--white-color);
+    }
+  
+    .schedule-table span {
+      color: var(--gray-color);
+    }
+  
+    .schedule-table span,
+    .schedule-table small {
+      font-size: var(--menu-font-size);
+      text-transform: uppercase;
+    }
+  
+    .schedule-table small {
+      position: relative;
+      top: 10px;
+    }
+  
+    .table .thead-light th,
+    .schedule-table tr td:first-child {
+      background: var(--primary-color);
+      border: 1px solid #212122;
+      color: var(--white-color);
+    }
+  
+    .schedule-table .thead-light th {
+      border-bottom: 0;
+      text-transform: uppercase;
+    }
+  
+    .table-bordered td, 
+    .table-bordered th {
+      border: 1px solid #212122;
+    }
+  
+    .table-bordered td {
+      padding-bottom: 22px;
+    }
+  
+    .table td, .table th {
+      padding: 1rem;
+    }
+  
+  
+    /*---------------------------------------
+        ABOUT & TEAM            
+    -----------------------------------------*/
+  
+    .about {
+      background: var(--about-bg-color);
+    }
+  
+    .about-working-hours {
+      border-left: 2px solid;
+      padding-left: 3.5rem;
+    }
+  
+    .about-working-hours strong {
+      color: var(--white-color);
+      opacity: 0.85;
+    }
+  
+    .team-thumb {
+      position: relative;
+    }
+  
+    .team-info {
+      background: var(--white-color);
+      border-radius: 0 0 2px 2px;
+      box-shadow: 6px 0 38px rgba(20,20,20,0.10);
+      padding: 20px;
+      position: relative;
+    }
+  
+    .team-info span {
+      font-weight: var(--font-weight-light);
+      opacity: 0.85;
+    }
+  
+    .team-info .social-icon {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+  
+    .team-info .social-icon li {
+      display: block;
+    }
+  
+  
+    /*---------------------------------------
+       CONTACT              
+    -----------------------------------------*/
+  
+    .webform input,
+    button#submit-button {
+      height: calc(2.25rem + 20px);
+    }
+  
+    .form-control {
+      border-radius: var(--border-radius-small);
+      margin: 1.3rem 0;
+    }
+  
+    .form-control:focus {
+      box-shadow: none;
+      border-color: var(--dark-color);
+    }
+  
+    button#submit-button {
+      background: var(--dark-color);
+      border-color: transparent;
+      color: var(--white-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  
+    button#submit-button:hover {
+      background: var(--primary-color);
+    }
+  
+    .contact h2 + p {
+      max-width: 90%;
+    }
+  
+    .google-map {
+      border-top: 1px solid #efebeb;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+    }
+  
+    .google-map iframe {
+      width: 100%;
+    }
+  
+  
+    /*---------------------------------------
+       FOOTER              
+    -----------------------------------------*/
+  
+    .site-footer {
+      background-color: #171819; /* Set background color to black */
+      color: white; /* Set text color to white */
+      border-top: 1px solid #171819;
+      padding: 3rem 0;
+    }
+    
+    .site-footer a {
+      color: white; /* Set footer links to white */
+      font-weight: var(--font-weight-light);
+    }
+    
+    .site-footer p {
+      color: white; /* Ensure the text is white */
+    }
+    
+    .contact .fa,
+    .site-footer .fa {
+      color: white; /* Set social icons to white */
+    }
+    
+    .site-footer a:hover,
+    .site-footer .fa:hover {
+      color: var(--primary-color); /* Keep hover color if needed */
+    }
+    
+  
+    /*---------------------------------------
+       SOCIAL ICON              
+    -----------------------------------------*/
+  
+    .social-icon {
+      position: relative;
+      padding: 0;
+      margin: 5px 0 0 0;
+    }
+  
+    .social-icon li {
+      display: inline-block;
+      list-style: none;
+    }
+  
+    .social-icon li a {
+      text-decoration: none;
+      display: inline-block;
+      color: var(--p-color);
+      font-size: var(--p-font-size);
+      font-weight: var(--font-weight-bold);
+      margin: 5px 10px;
+      text-align: center;
+    }
+  
+    .social-icon li a:hover {
+      color: var(--primary-color);
+    }
+  
+  
+    /*---------------------------------------
+       RESPONSIVE STYLES              
+    -----------------------------------------*/
+  
+    
+    @media screen and (max-width: 992px) {
+  
+      .section {
+        padding: 5rem 0;
+      }
+  
+      .nav-item .nav-link {
+        padding: 6px;
+      }
+  
+      .navbar .social-icon {
+        margin-top: 22px;
+      }
+  
+      .navbar-collapse,
+      .site-footer {
+        text-align: center;
+      }
+  
+      .schedule-table {
+        display: block;
+      }
+  
+      .modal-content {
+        padding: 2rem;
+      }
+    }
+  
+    @media screen and (max-width: 767px) {
+  
+      h1 {
+        font-size: 38px;
+      }
+  
+      .about-working-hours {
+        border-left: 0;
+        padding: 22px 0 0 0;
+      }
+  
+      .contact h2 span {
+        display: block;
+      }
+    }
+  
+    html, body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+      text-rendering: optimizeLegibility;
+  }
+  
+  /* Safari-specific fix */
+  @supports (-webkit-touch-callout: none) {
+      body {
+          -webkit-font-smoothing: subpixel-antialiased !important;
+      }
+    }
+  
+  /* Ensure the image and overlay are positioned correctly */
+  .class-thumb {
+    position: relative; /* Position for the image and overlay */
+    display: inline-block; /* Ensure it behaves like an inline block */
+    box-shadow: none; /* No shadow by default */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+  }
+  
+  /* Hover effect to add shadow when the image is hovered */
+  .class-thumb:hover {
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4); /* Add visible shadow when hovered */
+  }
+  
+  /* Overlay styling using ::before pseudo-element */
+  .class-thumb::before {
+    content: ''; /* Empty content to create the pseudo-element */
+    position: absolute; /* Position it absolutely within the container */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* 80% transparent black */
+    opacity: 0; /* Initially hidden */
+    z-index: -1; /* This ensures it stays behind the image */
+    transition: opacity 0.3s ease; /* Smooth transition for fading */
+  }
+  
+  /* Show the overlay when the image is hovered */
+  .class-thumb:hover::before {
+    opacity: 1; /* Show the overlay when hovering */
+  }
+  
+  /* Ensure the image is always in front of the overlay */
+  .class-thumb img {
+    display: block; /* Ensure the image is displayed as a block */
+    width: 100%; /* Make image fill the container */
+    height: 100%; /* Ensure the image is sized properly */
+    transition: all 0.3s ease; /* Smooth transition for brightness effect */
+    z-index: 1; /* Ensure the image is in front of the overlay */
+  }
+  
+  .hero-title {
+    font-size: 78px;  /* Makes the title text bigger */
+    color: white;     /* Makes the title text white */
+    font-weight: bold; /* Makes the title bold for emphasis */
+  }
+  
+  .hero-description {
+    font-size: 20px; /* Makes the description text bigger */
+    color: #cab8a4;    /* Makes the description text white */
+  }
+  
+  
+  .details-section {
+    margin-top: 50px;
+    padding: 40px 0;
+  }
+  
+  .details-section h2 {
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+  }
+  
+  .details-section p {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    line-height: 1.5;
+  }
+  
+  .details-section g {
+    font-size: 14px;
+    color: rgb(89, 89, 89);
+    line-height: 1.5;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #ff5733; /* Custom color for the button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #d44d29; /* Darker shade for the hover effect */
+  }
+  
+  @media (max-width: 768px) {
+    .details-section .row {
+        flex-direction: column; /* Stack the description and button on smaller screens */
+        align-items: center;
+    }
+  
+    .add-to-cart-btn {
+        margin-top: 20px; /* Add some space for mobile layout */
+    }
+  }
+  
+  
+  /* Add this CSS to your style file or within a <style> tag in the HTML */
+  
+  /* Styling for the image with rounded corners and shadow */
+  .rounded-corner {
+    border-radius: 20px; /* Adjust the value for more/less rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a soft effect */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect for interactivity */
+  .rounded-corner:hover {
+    transform: scale(1.05); /* Slightly enlarge the image on hover */
+  }
+  
+  /* Flexbox to align the image to the right side */
+  .col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center {
+    justify-content: flex-end; /* Align image to the right side */
+    display: flex; 
+    align-items: center; /* Vertically center the image */
+    padding-right: 50px; /* Adjust padding to move the image more to the right */
+  }
+  
+  /* Extra padding and margin to push the image more to the right */
+  .details-section .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Image container adjustments to move the image further right */
+  .col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center img {
+    margin-right: -240px; /* Adjust the margin to move the image more to the right */
+    position: relative; /* Allows top/bottom positioning */
+    top: 0px; /* Default position (adjustable) */
+  }
+  
+  /* To move the image vertically (up or down), adjust the 'top' value */
+  .col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center img {
+    top: -25px; /* Use a positive value to move the image down, negative to move up */
+  }
+  
+  .royalty-text {
+    font-size: 14px;
+    color: grey; /* You can adjust the shade of grey if needed, like #808080 */
+  }
+  
