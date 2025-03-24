@@ -275,13 +275,12 @@ https://www.tooplate.com/view/2119-gymso-fitness
         <div class="row">
 
             <div class="col-lg-12 col-12 text-center mb-5">
-                <!-- Swapped the text content and their styles -->
                 <h2 style="color: white;">Any questions? Feel free to ask!</h2>
                 <h6 data-aos="fade-up" data-aos-delay="200" style="color: white;">Send me a message, and I’ll get back to you soon!</h6>
             </div>
 
             <div class="col-lg-8 col-md-10 mx-auto">
-                <form class="contact-form webform" id="contactForm">
+                <form class="contact-form webform" id="contactForm" action="https://formspree.io/f/mdkezlgo" method="POST">
                     <div class="form-group">
                         <input type="text" class="form-control" id="contact-name" name="name" placeholder="Your Name" required>
                     </div>
@@ -291,10 +290,14 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     <div class="form-group">
                         <textarea class="form-control" id="contact-message" name="message" rows="5" placeholder="Your Message" required></textarea>
                     </div>
+                    
+                    <!-- Honeypot field to prevent spam -->
+                    <input type="text" name="_gotcha" style="display: none;">
+                    
                     <button type="submit" class="btn custom-btn bg-color">Send Message</button>
                 </form>
 
-                <!-- Success message will appear here after form submission -->
+                <!-- Success message will appear here -->
                 <p id="success-message" class="text-center text-muted mt-3" style="color: white; font-size: 28px; font-weight: bold; display: none;">
                     Thank you for reaching out! I'll get back to you soon.
                 </p>
@@ -305,21 +308,25 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
 <script>
     document.getElementById("contactForm").addEventListener("submit", function(event) {
-        let name = document.getElementById("contact-name").value.trim();
-        let email = document.getElementById("contact-email").value.trim();
-        let message = document.getElementById("contact-message").value.trim();
-    
-        if (name === "" || email === "" || message === "") {
-            event.preventDefault(); // Prevent form submission if any field is empty
-            alert("Please fill in all fields before submitting.");
-        } else {
-            event.preventDefault(); // Prevent actual form submission since it's a demo
-            // Show the success message under the form
-            document.getElementById("success-message").style.display = "block";
+        event.preventDefault(); // Prevent default form submission
 
-            // Optionally, reset the form fields
-            document.getElementById("contactForm").reset();
-        }
+        let formData = new FormData(this);
+
+        fetch(this.action, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                document.getElementById("success-message").style.display = "block"; 
+                document.getElementById("contactForm").reset();
+            } else {
+                alert("Failed to send email. Please try again later.");
+            }
+        })
+        .catch(error => console.error("Error:", error));
     });
 </script>
 
