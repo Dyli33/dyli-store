@@ -116,7 +116,7 @@
                 
  <!-- Add to Cart Button below the description -->
 <div class="text-center" style="margin-top: 70px;">
-    <button class="btn custom-btn bg-color mt-3" style="font-size: 16px; padding: 13px 25px;">Add to Cart</button>
+    <button class="btn custom-btn bg-color mt-3" style="font-size: 16px; padding: 13px 25px;">Buy Anarchy - 30$</button>
 </div>
 
             </div>
@@ -146,8 +146,8 @@
 
             <!-- Audio Loop 1 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio1" controls>
+                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
+                    <audio id="audio1" controls preload="metadata">
                         <source src="audio/loop1anarchy.mp3" type="audio/mpeg">
                         <source src="audio/loop1anarchy.wav" type="audio/wav">
                         Your browser does not support the audio element.
@@ -158,8 +158,8 @@
 
             <!-- Audio Loop 2 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio2" controls>
+                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
+                    <audio id="audio2" controls preload="metadata">
                         <source src="audio/loop2anarchy.mp3" type="audio/mpeg">
                         <source src="audio/loop2anarchy.wav" type="audio/wav">
                         Your browser does not support the audio element.
@@ -168,10 +168,10 @@
                 </div>
             </div>
 
-            <!-- Audio Loop 3 -->
-            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio3" controls>
+            <!-- Audio Loop 2 -->
+            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
+                    <audio id="audio2" controls preload="metadata">
                         <source src="audio/loop3anarchy.mp3" type="audio/mpeg">
                         <source src="audio/loop3anarchy.wav" type="audio/wav">
                         Your browser does not support the audio element.
@@ -183,23 +183,23 @@
     </div>
 </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const audios = document.querySelectorAll("audio");
 
-    audios.forEach(audio => {
-        audio.addEventListener("play", () => {
-            audios.forEach(otherAudio => {
-                if (otherAudio !== audio) {
-                    otherAudio.pause();
-                    otherAudio.currentTime = 0; // Reset to beginning
-                }
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const audios = document.querySelectorAll("audio");
+    
+        audios.forEach(audio => {
+            audio.addEventListener("play", () => {
+                audios.forEach(otherAudio => {
+                    if (otherAudio !== audio) {
+                        otherAudio.pause();
+                        otherAudio.currentTime = 0; // Reset to beginning
+                    }
+                });
             });
         });
     });
-});
-</script>
-
+    </script>
 
  <!-- FOOTER -->
 <footer class="site-footer">
