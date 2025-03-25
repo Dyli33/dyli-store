@@ -310,15 +310,9 @@ https://www.tooplate.com/view/2119-gymso-fitness
     document.getElementById("contactForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent default form submission
 
-        let form = this;
-        let formData = new FormData(form);
-        let submitButton = form.querySelector("button[type='submit']");
+        let formData = new FormData(this);
 
-        // Disable button to prevent multiple submissions
-        submitButton.disabled = true;
-        submitButton.textContent = "Sending...";
-
-        fetch(form.action, {
+        fetch(this.action, {
             method: "POST",
             body: formData,
             headers: { "Accept": "application/json" }
@@ -327,7 +321,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         .then(data => {
             if (data.ok) {
                 document.getElementById("success-message").style.display = "block"; 
-                form.reset();
+                document.getElementById("contactForm").reset();
             } else {
                 alert("Failed to send email. Please try again later.");
             }
