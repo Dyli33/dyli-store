@@ -146,8 +146,8 @@
 
             <!-- Audio Loop 1 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
-                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
-                    <audio id="audio1" controls preload="metadata">
+                <div class="audio-preview" style="text-align: center; background-color: #171819;">
+                    <audio id="audio1" controls>
                         <source src="audio/loop1lunarity.mp3" type="audio/mpeg">
                         <source src="audio/loop1lunarity.wav" type="audio/wav">
                         Your browser does not support the audio element.
@@ -158,8 +158,8 @@
 
             <!-- Audio Loop 2 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
-                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
-                    <audio id="audio2" controls preload="metadata">
+                <div class="audio-preview" style="text-align: center; background-color: #171819;">
+                    <audio id="audio2" controls>
                         <source src="audio/loop2lunarity.mp3" type="audio/mpeg">
                         <source src="audio/loop2lunarity.wav" type="audio/wav">
                         Your browser does not support the audio element.
@@ -168,10 +168,10 @@
                 </div>
             </div>
 
-            <!-- Audio Loop 2 -->
-            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
-                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
-                    <audio id="audio2" controls preload="metadata">
+            <!-- Audio Loop 3 -->
+            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
+                <div class="audio-preview" style="text-align: center; background-color: #171819;">
+                    <audio id="audio3" controls>
                         <source src="audio/loop3lunarity.mp3" type="audio/mpeg">
                         <source src="audio/loop3lunarity.wav" type="audio/wav">
                         Your browser does not support the audio element.
@@ -183,23 +183,22 @@
     </div>
 </section>
 
-
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const audios = document.querySelectorAll("audio");
-    
-        audios.forEach(audio => {
-            audio.addEventListener("play", () => {
-                audios.forEach(otherAudio => {
-                    if (otherAudio !== audio) {
-                        otherAudio.pause();
-                        otherAudio.currentTime = 0; // Reset to beginning
-                    }
-                });
+document.addEventListener("DOMContentLoaded", function () {
+    const audios = document.querySelectorAll("audio");
+
+    audios.forEach(audio => {
+        audio.addEventListener("play", () => {
+            audios.forEach(otherAudio => {
+                if (otherAudio !== audio) {
+                    otherAudio.pause();
+                    otherAudio.currentTime = 0; // Reset to beginning
+                }
             });
         });
     });
-    </script>
+});
+</script>
 
 
  <!-- FOOTER -->
