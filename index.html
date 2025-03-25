@@ -312,9 +312,9 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
         let form = this;
         let formData = new FormData(form);
-        let submitButton = document.getElementById("submit-button");
+        let submitButton = form.querySelector("button[type='submit']");
 
-        // Disable button and change text
+        // Disable button to prevent multiple submissions
         submitButton.disabled = true;
         submitButton.textContent = "Sending...";
 
@@ -327,7 +327,6 @@ https://www.tooplate.com/view/2119-gymso-fitness
         .then(data => {
             if (data.ok) {
                 document.getElementById("success-message").style.display = "block"; 
-                submitButton.style.display = "none"; // Hide the button only after sending
                 form.reset();
             } else {
                 alert("Failed to send email. Please try again later.");
