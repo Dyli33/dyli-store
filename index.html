@@ -376,7 +376,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
 
 
-   <!-- Modal -->
+ <!-- Modal -->
 <div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -388,7 +388,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         </div>
   
         <div class="modal-body">
-          <form class="membership-form webform" id="signupForm">
+          <form class="membership-form webform" id="signupForm" action="/submit" method="POST">
             <input type="text" class="form-control" id="name" name="cf-name" placeholder="Name" required>
             <input type="email" class="form-control" id="email" name="cf-email" placeholder="Email" required>
             <input type="text" class="form-control" name="cf-instagram" placeholder="Instagram @ (optional)">
@@ -402,19 +402,78 @@ https://www.tooplate.com/view/2119-gymso-fitness
         <div class="modal-footer"></div>
       </div>
     </div>
-  </div>
-  
-  <script>
-    document.getElementById("signupForm").addEventListener("submit", function(event) {
-      let name = document.getElementById("name").value.trim();
-      let email = document.getElementById("email").value.trim();
-  
-      if (name === "" || email === "") {
-        event.preventDefault(); // Prevent form submission
-        alert("Please fill in both Name and Email before submitting.");
-      }
+</div>
+
+<script>
+    // Function to get the stored producers count from DynamoDB through Lambda
+    function getProducersData() {
+        fetch('https://your-api-id.execute-api.your-region.amazonaws.com/prod/getCount') // Replace with your actual API Gateway URL
+            .then(response => response.json())
+            .then(data => {
+                const producersCount = data.count;
+                document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
+            })
+            .catch(err => {
+                console.error("Error fetching producers count: ", err);
+            });
+    }
+
+    // Function to update the producers count by calling the Lambda function via API Gateway
+    function updateProducersCount(formData) {
+        fetch('https://yahqq2syya.execute-api.eu-north-1.amazonaws.com/Prod', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Ensure content is sent as JSON
+            },
+            body: JSON.stringify(formData) // Send the form data (name, email, instagram)
+        })
+        .then(response => response.json())
+        .then(data => {
+            const updatedCount = data.count;
+            document.getElementById('producers-count').innerHTML = `Currently, ${updatedCount} Producers`;
+        })
+        .catch(err => {
+            console.error("Error updating producers count: ", err);
+        });
+    }
+
+    // Function to handle the form submission (e.g., sign-up) and trigger producer count update
+    document.querySelector(".membership-form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent actual form submission
+        
+        // Get form data
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const instagram = document.querySelector("input[name='cf-instagram']").value.trim();
+        
+        // Validate form fields
+        if (!name || !email) {
+            alert("Name and email are required!");
+            return;
+        }
+
+        // Create an object to send in the request body
+        const formData = {
+            name: name,
+            email: email,
+            instagram: instagram || 'Not provided'
+        };
+
+        // Call the function to update the producers count and pass the form data
+        updateProducersCount(formData);
+
+        // Optionally reset the form after submission
+        this.reset();
     });
-  </script>
+
+    // Load and display the producers count when the page loads
+    window.onload = function () {
+        getProducersData();
+    };
+</script>
+
+
+  
   
      <!-- SCRIPTS -->
      <script src="js/jquery.min.js"></script>
