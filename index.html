@@ -294,12 +294,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     <!-- Honeypot field to prevent spam -->
                     <input type="text" name="_gotcha" style="display: none;">
                     
-                    <!-- Centered button with new color -->
-                    <div style="text-align: center; margin-top: 15px;">
-                        <button type="submit" class="btn" id="submit-button" style="background-color: #f13a11; color: white; border: none; padding: 10px 20px; font-size: 18px; border-radius: 5px; cursor: pointer;">
-                            Send Message
-                        </button>
-                    </div>
+                    <button type="submit" class="btn custom-btn bg-color">Send Message</button>
                 </form>
 
                 <!-- Success message will appear here -->
@@ -317,9 +312,9 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
         let form = this;
         let formData = new FormData(form);
-        let submitButton = document.getElementById("submit-button");
+        let submitButton = form.querySelector("button[type='submit']");
 
-        // Disable button and change text
+        // Disable button to prevent multiple submissions
         submitButton.disabled = true;
         submitButton.textContent = "Sending...";
 
@@ -332,7 +327,6 @@ https://www.tooplate.com/view/2119-gymso-fitness
         .then(data => {
             if (data.ok) {
                 document.getElementById("success-message").style.display = "block"; 
-                submitButton.style.display = "none"; // Hide the button only after sending
                 form.reset();
             } else {
                 alert("Failed to send email. Please try again later.");
