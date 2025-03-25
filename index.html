@@ -115,7 +115,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
         <div class="row">
 
             <div class="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
-                <h2 class="mb-3 text-white" data-aos="fade-up">Let’s make some fire together!🔥</h2>
+                <h2 class="mb-3 text-white" data-aos="fade-up">Let's make some fire together!🔥</h2>
 
                 <h6 class="mb-4 text-white" data-aos="fade-up">Want me to hook you up with fresh loops every week?</h6>
 
@@ -127,8 +127,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
             <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
                  <div class="about-working-hours">
                       <div>
-                        <!-- Update the text in the <h3> to include the producer count -->
-                        <h3 class="mt-4 text-white" id="producers-count" data-aos="fade-up" data-aos-delay="900">Currently, 136 Producers</h3>
+                        <h3 class="mt-4 text-white" id="producers-count" data-aos="fade-up" data-aos-delay="900">Currently, 0 Producers</h3>
                         <p class="producers-count" data-aos="fade-up" data-aos-delay="1000">Are getting their hands on free loops</p>
                       </div>
                  </div>
@@ -139,63 +138,75 @@ https://www.tooplate.com/view/2119-gymso-fitness
 </section>
 
 <script>
-    // Initialize the starting count of producers
-    let producersCount = 136;
+    const API_URL = "https://your-api-gateway-endpoint.com/register"; // Replace with your actual API Gateway URL
 
-    // Function to get the stored last visit timestamp
-    function getLastVisitTime() {
-        let lastVisitTime = localStorage.getItem('lastVisitTime');
-        
-        // If no last visit time exists in localStorage, set it to the current time
-        if (lastVisitTime === null) {
-            lastVisitTime = Date.now();  // Set to current time if it's the first visit
-            localStorage.setItem('lastVisitTime', lastVisitTime);  // Save to localStorage
-        } else {
-            lastVisitTime = parseInt(lastVisitTime); // If it exists, parse it to integer
-        }
-        
-        return lastVisitTime;
+    // Function to get the latest producers count
+    function getProducersData() {
+        fetch(API_URL)
+            .then(response => response.json())
+            .then(data => {
+                if (data.count !== undefined) {
+                    document.getElementById('producers-count').innerHTML = `Currently, ${data.count} Producers`;
+                }
+            })
+            .catch(err => {
+                console.error("Error fetching producers count: ", err);
+                // Fallback to 0 if fetch fails
+                document.getElementById('producers-count').innerHTML = 'Currently, 0 Producers';
+            });
     }
 
-    // Function to calculate the producer count based on time elapsed
-    function calculateProducerCount() {
-        let lastVisitTime = getLastVisitTime();
-        let currentTime = Date.now();
+    // Function to handle form submission and update producer count
+    document.querySelector("#signupForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
 
-        // Calculate the time difference in hours
-        let timeDifference = currentTime - lastVisitTime; // Time in milliseconds
-        let hoursElapsed = Math.floor(timeDifference / 3600000); // Convert to hours
+        // Get form data
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const instagram = document.querySelector("input[name='cf-instagram']").value.trim() || "Not provided";
 
-        // Increment the producers count by 1 or 2 for each hour elapsed
-        let newProducersCount = producersCount + (hoursElapsed * (Math.floor(Math.random() * 2) + 1));  // Random increment (1 or 2)
-
-        // Update the local storage with the new producer count and last visit time
-        localStorage.setItem('producersCount', newProducersCount);
-        localStorage.setItem('lastVisitTime', currentTime);
-
-        // Update the producers count on the page
-        document.getElementById('producers-count').innerHTML = `Currently, ${newProducersCount} Producers`;
-    }
-
-    // Function to initialize the page with the stored or calculated producer count
-    window.onload = function () {
-        // Retrieve the current count of producers from localStorage
-        let producersCount = localStorage.getItem('producersCount');
-        
-        // If no count exists, set it to 136 (default starting value)
-        if (producersCount === null) {
-            producersCount = 136;
-            localStorage.setItem('producersCount', producersCount);
-        } else {
-            producersCount = parseInt(producersCount); // Parse the stored count as an integer
+        // Validate required fields
+        if (!name || !email) {
+            alert("Please enter your name and email!");
+            return;
         }
 
-        // Display the initial producer count on the page
-        document.getElementById('producers-count').innerHTML = `Currently, ${producersCount} Producers`;
+        // Create data object
+        const formData = {
+            name: name,
+            email: email,
+            instagram: instagram
+        };
 
-        // Calculate the new producer count based on the time difference
-        calculateProducerCount();
-    };
+        // Send data to API Gateway
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.count !== undefined) {
+                // Update producers count on the page
+                document.getElementById('producers-count').innerHTML = `Currently, ${data.count} Producers`;
+
+                // Reset form after submission
+                document.getElementById("signupForm").reset();
+
+                // Show success message
+                alert("You have successfully signed up!");
+            }
+        })
+        .catch(error => {
+            console.error("Error updating producers count:", error);
+            alert("Error submitting form. Please try again.");
+        });
+    });
+
+    // Load initial producers count when the page loads
+    window.onload = getProducersData;
 </script>
 
 
