@@ -216,18 +216,78 @@
     </div>
 </section>
 
-    <!-- CONTACT FORM SECTION -->
-    <section class="contact section" id="contact" style="padding-top: 20px; margin-top: 20px; background-color: #171819;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12 text-center mb-5">
-                    <h2 style="color: white;">Any questions? Feel free to ask!</h2>
-                    <h6 data-aos="fade-up" data-aos-delay="200" style="color: white;">Send me a message, and I'll get back to you soon!</h6>
-                </div>
-                <!-- Your contact form here -->
+<!-- CONTACT FORM SECTION -->
+<section class="contact section" id="contact" style="padding-top: 20px; margin-top: 20px; background-color: #171819;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center mb-5">
+                <h2 style="color: white;">Any questions? Feel free to ask!</h2>
+                <h6 data-aos="fade-up" data-aos-delay="200" style="color: white;">Send me a message, and I’ll get back to you soon!</h6>
+            </div>
+
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <form class="contact-form webform" id="contactForm" action="https://formspree.io/f/mdkezlgo" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="contact-name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="contact-email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="contact-message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    
+                    <!-- Honeypot field to prevent spam -->
+                    <input type="text" name="_gotcha" style="display: none;">
+                    
+                    <button type="submit" class="btn custom-btn bg-color">Send Message</button>
+                </form>
+
+                <!-- Success message will appear here -->
+                <p id="success-message" class="text-center text-muted mt-3" style="color: white; font-size: 28px; font-weight: bold; display: none;">
+                    Thank you for reaching out! I'll get back to you soon.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Show success message immediately
+        document.getElementById("success-message").style.display = "block";
+        
+        // Reset the form immediately for better UX
+        const form = this;
+        form.reset();
+
+        // Prepare form data
+        let formData = new FormData(form);
+
+        // Send form data in background
+        fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.ok) {
+                console.error("Form submission had an issue on the server side");
+                // Optionally handle server errors silently since we already showed success
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            // We don't revert the success message to avoid confusing the user
+        });
+    });
+</script>
+
+
 
     <!-- FOOTER -->
     <footer class="site-footer">
