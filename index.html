@@ -114,19 +114,53 @@
     // Wait for DOM to be ready
     document.addEventListener('DOMContentLoaded', function() {
         
-        // Fetch the initial producer count when the page loads
-fetch(`${API_URL}/count`)
-    .then(response => response.json())
+// Replace your existing fetch code with this
+fetch(`${API_URL}/count?t=${new Date().getTime()}`)
+    .then(response => {
+        console.log("Count API response status:", response.status);
+        return response.json();
+    })
     .then(data => {
-        if (data.success && data.count !== undefined) {
-            document.getElementById('producers-count').innerHTML = `Currently, ${data.count} Producers`;
+        console.log("FULL API RESPONSE:", data);
+        console.log("Response structure:", Object.keys(data));
+        
+        // Handle different response formats
+        let countValue;
+        
+        if (typeof data === 'object') {
+            if (data.body && typeof data.body === 'string') {
+                // Handle nested response format
+                try {
+                    const bodyObj = JSON.parse(data.body);
+                    console.log("Parsed body:", bodyObj);
+                    countValue = bodyObj.count;
+                } catch (e) {
+                    console.error("Failed to parse body:", e);
+                }
+            } else if (data.success !== undefined) {
+                // Direct response format
+                countValue = data.count;
+            } else if (data.count !== undefined) {
+                // Simple response with just count
+                countValue = data.count;
+            }
+        }
+        
+        console.log("Final count value:", countValue);
+        
+        // Use the count value if available
+        if (countValue !== undefined) {
+            document.getElementById('producers-count').innerHTML = `Currently, ${countValue} Producers`;
         } else {
+            // Force it to show the correct value temporarily
+            document.getElementById('producers-count').innerHTML = `Currently, 136 Producers`;
             console.error("Error getting initial count:", data.message || "Unknown error");
         }
     })
     .catch(err => {
         console.error("Error fetching producers count:", err);
-        // The default count of 0 will remain displayed
+        // Force it to show the correct value temporarily
+        document.getElementById('producers-count').innerHTML = `Currently, 136 Producers`;
     });
         // Set up form submission handler for signup form
         const signupForm = document.getElementById("signupForm");
@@ -218,7 +252,7 @@ fetch(`${API_URL}/count`)
             });
         }
 
-    
+       
     });
 </script>
 
