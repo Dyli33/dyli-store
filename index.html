@@ -93,75 +93,138 @@
 </section>
 
 <script>
-    const API_URL = "https://your-api-gateway-endpoint.com/register"; // Replace with your actual API Gateway URL
+    // Replace this with your actual API Gateway URL
+    const API_URL = "https://j7ddpxwak4.execute-api.eu-north-1.amazonaws.com/prod";
+    
+    // Function to copy email
+    function copyEmail() {
+        const email = "dyli.prod@gmail.com"; 
+        navigator.clipboard.writeText(email).then(() => {
+            const copiedText = document.getElementById("copied-text");
+            copiedText.style.display = "block";
 
-    // Function to get the latest producers count
-    function getProducersData() {
-        fetch(API_URL)
-            .then(response => response.json())
-            .then(data => {
-                if (data.count !== undefined) {
-                    document.getElementById('producers-count').innerHTML = `Currently, ${data.count} Producers`;
-                }
-            })
-            .catch(err => {
-                console.error("Error fetching producers count: ", err);
-                // Fallback to 0 if fetch fails
-                document.getElementById('producers-count').innerHTML = 'Currently, 0 Producers';
-            });
+            setTimeout(() => {
+                copiedText.style.display = "none";
+            }, 1000);
+        }).catch(err => {
+            console.error("Failed to copy email: ", err);
+        });
     }
 
-    // Function to handle form submission and update producer count
-    document.querySelector("#signupForm").addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent default form submission
+    // Wait for DOM to be ready
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Fetch the initial producer count when the page loads
+fetch(`${API_URL}/count`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.count !== undefined) {
+            document.getElementById('producers-count').innerHTML = `Currently, ${data.count} Producers`;
+        } else {
+            console.error("Error getting initial count:", data.message || "Unknown error");
+        }
+    })
+    .catch(err => {
+        console.error("Error fetching producers count:", err);
+        // The default count of 0 will remain displayed
+    });
+        // Set up form submission handler for signup form
+        const signupForm = document.getElementById("signupForm");
+        if (signupForm) {
+            signupForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
 
-        // Get form data
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const instagram = document.querySelector("input[name='cf-instagram']").value.trim() || "Not provided";
+                // Get form data
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const instagram = document.querySelector("input[name='cf-instagram']").value.trim() || "Not provided";
 
-        // Validate required fields
-        if (!name || !email) {
-            alert("Please enter your name and email!");
-            return;
+                // Validate required fields
+                if (!name || !email) {
+                    alert("Please enter your name and email!");
+                    return;
+                }
+
+                // Create data object
+                const formData = {
+                    name: name,
+                    email: email,
+                    instagram: instagram
+                };
+
+                // Show processing state
+                const submitButton = document.getElementById("submit-button");
+                submitButton.disabled = true;
+                submitButton.textContent = "Processing...";
+                
+                // Clear previous messages
+                const formMessage = document.getElementById("form-message");
+                formMessage.style.display = "none";
+
+                // Send data to API Gateway
+                fetch(`${API_URL}/register`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Submit";
+                    
+                    if (data.success) {
+                        // Update producers count on the page if available
+                        if (data.count !== undefined) {
+                            document.getElementById('producers-count').innerHTML = `Currently, ${data.count} Producers`;
+                        } else {
+                            // Fallback: increment the current count (just for display)
+                            const currentText = document.getElementById('producers-count').innerHTML;
+                            const currentCount = parseInt(currentText.match(/\d+/)[0]) || 0;
+                            document.getElementById('producers-count').innerHTML = `Currently, ${currentCount + 1} Producers`;
+                        }
+
+                        // Reset form after submission
+                        signupForm.reset();
+
+                        // Show success message
+                        formMessage.innerHTML = "Thank you for signing up! You'll receive your free loops soon.";
+                        formMessage.style.display = "block";
+                        formMessage.style.color = "green";
+                        
+                        // Close the modal after 3 seconds
+                        setTimeout(() => {
+                            $('#membershipForm').modal('hide');
+                            formMessage.style.display = "none";
+                        }, 3000);
+                    } else {
+                        formMessage.innerHTML = data.message || "Something went wrong. Please try again.";
+                        formMessage.style.display = "block";
+                        formMessage.style.color = "red";
+                    }
+                })
+                .catch(error => {
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Submit";
+                    
+                    console.error("Error submitting form:", error);
+                    formMessage.innerHTML = "Network error. Please try again.";
+                    formMessage.style.display = "block";
+                    formMessage.style.color = "red";
+                });
+            });
         }
 
-        // Create data object
-        const formData = {
-            name: name,
-            email: email,
-            instagram: instagram
-        };
-
-        // Send data to API Gateway
-        fetch(API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.count !== undefined) {
-                // Update producers count on the page
-                document.getElementById('producers-count').innerHTML = `Currently, ${data.count} Producers`;
-
-                // Reset form after submission
-                document.getElementById("signupForm").reset();
-
-                // Show success message
-                alert("You have successfully signed up!");
-            }
-        })
-        .catch(error => {
-            console.error("Error updating producers count:", error);
-            alert("Error submitting form. Please try again.");
-        });
+        // Initially try to load producers count
+        // This is a placeholder until you create the second Lambda function
+        const producersCountElement = document.getElementById('producers-count');
+        if (producersCountElement) {
+            producersCountElement.innerHTML = 'Currently, 0 Producers';
+        }
     });
-
-    // Load initial producers count when the page loads
-    window.onload = getProducersData;
 </script>
 
 
@@ -337,135 +400,5 @@
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
 
-    <!-- API INTEGRATION SCRIPT -->
-    <script>
-        // Configuration
-        const API_BASE_URL = "https://a2e8hwnp6e.execute-api.eu-north-1.amazonaws.com/prod";
-        
-        // DOM Elements
-        const producersCountElement = document.getElementById('producers-count');
-        const signupForm = document.getElementById('signupForm');
-        const formMessage = document.getElementById('form-message');
-        
-        // Helper functions
-        function showMessage(message, isError = false) {
-            formMessage.style.display = 'block';
-            formMessage.textContent = message;
-            formMessage.className = isError ? 'alert alert-danger' : 'alert alert-success';
-            setTimeout(() => formMessage.style.display = 'none', 5000);
-        }
-
-        // Get producer count
-        async function getProducersCount() {
-    try {
-        producersCountElement.innerHTML = 'Loading...'; // Show loading state
-        
-        const response = await fetch(`${API_BASE_URL}/count`);
-        
-        console.log('Count API Response:', response); // Debug log
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log('Count API Data:', data); // Debug log
-        
-        if (typeof data.count === 'number') {
-            producersCountElement.innerHTML = `Currently, ${data.count} Producers`;
-        } else {
-            throw new Error('Invalid count data');
-        }
-    } catch (error) {
-        console.error("Failed to load producer count:", error);
-        producersCountElement.innerHTML = 'Currently, many Producers';
-        
-        // Optional: Retry after 3 seconds
-        setTimeout(getProducersCount, 3000);
-    }
-}
-
-        // Handle form submission
-        async function handleSignup(event) {
-    event.preventDefault();
-    const submitButton = event.target.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-
-    // Get and format form data
-    const formData = {
-        name: document.getElementById("name").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        instagram: document.querySelector("input[name='cf-instagram']").value.trim() || "Not provided"
-    };
-
-    // Validate
-    if (!formData.name || !formData.email) {
-        showMessage("Please enter your name and email!", true);
-        return;
-    }
-
-    try {
-        // Show loading state
-        submitButton.disabled = true;
-        submitButton.textContent = "Signing up...";
-
-        // Send to API with correct headers
-        const response = await fetch(`${API_BASE_URL}/register`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(formData)
-        });
-
-        // Handle response
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        
-        // Success handling
-        showMessage("You're now signed up! Welcome!");
-        getProducersCount(); // Refresh count
-        signupForm.reset();
-        
-        // Close modal after 1.5 seconds
-        setTimeout(() => {
-            $('#membershipForm').modal('hide');
-        }, 1500);
-
-    } catch (error) {
-        console.error("Submission error:", error);
-        showMessage(error.message || "Failed to sign up. Please try again.", true);
-    } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = originalText;
-    }
-}
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            getProducersCount();
-            signupForm.addEventListener('submit', handleSignup);
-            
-            // Reset form when modal opens
-            $('#membershipForm').on('show.bs.modal', () => {
-                signupForm.reset();
-                formMessage.style.display = 'none';
-            });
-        });
-
-        // Email copy function
-        function copyEmail() {
-            navigator.clipboard.writeText("dyli.prod@gmail.com").then(() => {
-                const copiedText = document.getElementById("copied-text");
-                copiedText.style.display = "block";
-                setTimeout(() => copiedText.style.display = "none", 1000);
-            });
-        }
-    </script>
 </body>
 </html>
