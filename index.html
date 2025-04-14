@@ -230,7 +230,7 @@ fetch(`${API_URL}/count?t=${new Date().getTime()}`)
                         setTimeout(() => {
                             $('#membershipForm').modal('hide');
                             formMessage.style.display = "none";
-                        }, 3000);
+                        }, 1000);
                     } else {
                         formMessage.innerHTML = data.message || "Something went wrong. Please try again.";
                         formMessage.style.display = "block";
