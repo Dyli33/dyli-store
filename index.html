@@ -16,6 +16,57 @@
      
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-gymso-style.css">
+     
+     <!-- MOBILE RESPONSIVENESS ADDITIONAL CSS -->
+     <style>
+        @media (max-width: 767px) {
+            /* Smaller logo text on mobile */
+            .navbar a.white-text {
+                font-size: 1.2rem;
+                padding: 10px 0;
+            }
+            
+            /* Adjust navbar height on mobile */
+            .navbar {
+                padding: 5px 0;
+                min-height: 50px;
+            }
+            
+            /* Hero section adjustments for mobile */
+            .hero {
+                min-height: 70vh;
+                padding-top: 60px;
+            }
+            
+            /* Adjust welcome text size on mobile */
+            .welcome-text {
+                font-size: 1.8rem;
+            }
+            
+            /* Make navbar toggle button more visible */
+            .navbar-toggler {
+                padding: 5px 8px;
+                border: 1px solid rgba(255,255,255,0.5);
+            }
+            
+            /* Improve dropdown menu visibility on mobile */
+            .navbar-collapse {
+                background-color: rgba(0,0,0,0.9);
+                padding: 10px;
+                border-radius: 5px;
+            }
+            
+            /* Add spacing for nav items on mobile */
+            .navbar-nav .nav-item {
+                margin: 5px 0;
+            }
+            
+            /* Adjust social icons on mobile */
+            .social-icon {
+                margin-top: 10px;
+            }
+        }
+     </style>
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
 
