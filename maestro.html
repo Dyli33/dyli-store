@@ -12,6 +12,69 @@
     <link rel="stylesheet" href="css/tooplate-gymso-style.css"> <!-- Custom styling -->
     <link rel="icon" href="images/favicon-32x32.png" type="image/png">
 
+   <!-- Mobile Welcome Text Size Fix -->
+   <style>
+    @media (max-width: 767px) {
+        .welcome-text {
+            font-size: 100px !important; /* 20% increase from 90px = 108px */
+            font-weight: 800;
+            line-height: 1.1; /* Slightly adjusted for bigger text */
+            margin: 35px 0;
+            padding: 0;
+        }
+        
+        /* Make sure mobile devices don't show horizontal scrollbars */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Hero section adjustments for larger text */
+        .hero {
+            min-height: 90vh; /* Increased to accommodate the larger text */
+            padding: 30px 0;
+        }
+        
+        /* Make the Loopkit title 3 times bigger on mobile only (1.2 × 2.5 = 3) */
+        .hero-title {
+            font-size: 300% !important;
+            line-height: 1.2; /* Adjusted line height for better readability */
+        }
+        
+        /* Hide maestro image on mobile devices */
+        .col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center:has(img[src="images/maestro-art.jpg"]) {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            width: 0 !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+        }
+        
+        /* Mobile layout adjustments for the image and buy button */
+        .mobile-image-container {
+            order: 1;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .mobile-description-container {
+            order: 2;
+        }
+        
+        .mobile-row {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-image-container img {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+    }
+</style>
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
 
