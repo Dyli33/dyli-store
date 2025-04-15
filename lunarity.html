@@ -15,11 +15,6 @@
 
      <!-- Mobile Welcome Text Size Fix -->
      <style>
-        /* Hide the image container on all devices */
-        .mobile-image-container {
-            display: none;
-        }
-        
         @media (max-width: 767px) {
             .welcome-text {
                 font-size: 100px !important; /* 20% increase from 90px = 108px */
@@ -53,12 +48,10 @@
                 margin-bottom: 30px;
                 text-align: center;
                 width: 100%;
-                position: relative;
-                left: -50px; /* Move the container 50px to the left on mobile */
             }
             
             .mobile-description-container {
-                order: 2; /* Changed from 2 to 1 to place description before image */
+                order: 2;
             }
             
             .mobile-row {
@@ -149,9 +142,9 @@
 
 <section class="details-section">
     <div class="container">
-        <div class="row mobile-row">
+        <div class="row">
             <!-- Description on the left -->
-            <div class="col-lg-6 col-md-6 col-12 mobile-description-container" data-aos="fade-up">
+            <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up">
                 <h2>Details about Loopkit vol.2 Lunarity</h2>
 
                 <p>
@@ -181,8 +174,8 @@
 
             </div>
 
-            <!-- Image on the right (on desktop) or below (on mobile) -->
-            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center mobile-image-container">
+            <!-- Image on the right -->
+            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center mobile-image-container" >
                 <img src="images/lunarity-art.jpg" alt="Loopkit Image" class="img-fluid rounded-corner" />
             </div>
         </div>
