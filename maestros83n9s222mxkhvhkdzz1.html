@@ -180,13 +180,32 @@ https://www.tooplate.com/view/2119-gymso-fitness
             // S3 bucket URL for the maestro.zip file with eu-north-1 region
             const downloadUrl = "https://dyli-store-downloads.s3.eu-north-1.amazonaws.com/maestro.zip";
             
-            // First initiate the download in a new window/tab
-            const downloadWindow = window.open(downloadUrl, '_blank');
+            // Track download attempt (if you have analytics)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download_attempt', {
+                    'event_category': 'Downloads',
+                    'event_label': 'Maestro'
+                });
+            }
             
-            // Then redirect the current page after a longer delay (2 seconds)
-            setTimeout(function() {
-                window.location.href = 'index.html';
-            }, 2000);
+            try {
+                // First initiate the download in a new window/tab
+                const downloadWindow = window.open(downloadUrl, '_blank');
+                
+                // Check if popup was blocked
+                if (downloadWindow === null || typeof downloadWindow === 'undefined') {
+                    alert("Download popup was blocked. Please disable popup blocker and try again.");
+                    return;
+                }
+                
+                // Then redirect the current page after a longer delay (2 seconds)
+                setTimeout(function() {
+                    window.location.href = 'index.html';
+                }, 2000);
+            } catch (e) {
+                console.error("Download error:", e);
+                alert("There was an issue starting your download. Please try again or contact support.");
+            }
         });
      </script>
 </body>
