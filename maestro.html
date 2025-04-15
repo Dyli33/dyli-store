@@ -12,6 +12,21 @@
     <link rel="stylesheet" href="css/tooplate-gymso-style.css"> <!-- Custom styling -->
     <link rel="icon" href="images/favicon-32x32.png" type="image/png">
 
+    <!-- Mobile device styles -->
+    <style>
+        @media (max-width: 767px) {
+            /* Hide image container on mobile */
+            .col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center:has(img[src="images/maestro-art.jpg"]) {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
+                width: 0 !important;
+                overflow: hidden !important;
+                opacity: 0 !important;
+                position: absolute !important;
+            }
+        }
+    </style>
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
 
