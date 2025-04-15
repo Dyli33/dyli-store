@@ -21,10 +21,18 @@
      <style>
          @media (max-width: 767px) {
              .welcome-text {
-                 font-size: 45px !important;
-                 font-weight: 700;
-                 line-height: 1.2;
-                 margin: 20px 0;
+                 font-size: 135px !important; /* 3x bigger than the previous 45px */
+                 font-weight: 800;
+                 line-height: 1.1;
+                 margin: 30px 0;
+                 padding: 0;
+                 word-break: break-word;
+             }
+             
+             /* Adjust hero section to fit the much larger text */
+             .hero {
+                 min-height: 100vh;
+                 padding: 40px 0;
              }
              
              /* Make sure mobile devices don't show horizontal scrollbars */
