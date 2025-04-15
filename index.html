@@ -40,6 +40,27 @@
                  padding: 30px 0;
              }
          }
+         
+         /* Soon badge styling */
+         .soon-badge {
+             position: absolute;
+             top: 20px;
+             right: 20px;
+             background-color: rgba(255, 59, 63, 0.85);
+             color: white;
+             padding: 8px 20px;
+             border-radius: 5px;
+             font-weight: bold;
+             font-size: 18px;
+             z-index: 10;
+             transform: rotate(5deg);
+             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+         }
+         
+         .class-thumb {
+             position: relative;
+             display: block;
+         }
      </style>
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
@@ -306,6 +327,7 @@ fetch(`${API_URL}/count?t=${new Date().getTime()}`)
             <!-- Loopkit vol.2 Lunarity -->
             <div class="mt-5 mt-lg-0 mt-md-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="1000">
                 <a href="lunarity.html" class="class-thumb">
+                    <div class="soon-badge">COMING SOON</div>
                     <img src="images/class/crossfit-class.jpg" class="img-fluid" alt="Loopkit vol.2 Dirt">
                     <div class="class-info">
                         <h3 class="mb-1">Loopkit vol.2 Lunarity</h3>
@@ -318,6 +340,7 @@ fetch(`${API_URL}/count?t=${new Date().getTime()}`)
             <!-- Loopkit vol.3 Anarchy -->
             <div class="mt-5 mt-lg-0 col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
                 <a href="anarchy.html" class="class-thumb">
+                    <div class="soon-badge">COMING SOON</div>
                     <img src="images/class/cardio-class.jpg" class="img-fluid" alt="Loopkit vol.3 Anarchy">
                     <div class="class-info">
                         <h3 class="mb-1">Loopkit vol.3 Anarchy</h3>
