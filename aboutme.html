@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>D Y L I</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/aos.css">
+     <link rel="icon" href="images/favicon-32x32.png" type="image/png">
+     
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/tooplate-gymso-style.css">
+     
+     <!-- Mobile Welcome Text Size Fix -->
+     <style>
+         @media (max-width: 767px) {
+             .welcome-text {
+                 font-size: 100px !important; /* 20% increase from 90px = 108px */
+                 font-weight: 800;
+                 line-height: 1.1; /* Slightly adjusted for bigger text */
+                 margin: 35px 0;
+                 padding: 0;
+             }
+             
+             /* Make sure mobile devices don't show horizontal scrollbars */
+             html, body {
+                 overflow-x: hidden;
+                 width: 100%;
+             }
+             
+             /* Hero section adjustments for larger text */
+             .hero {
+                 min-height: 90vh; /* Increased to accommodate the larger text */
+                 padding: 30px 0;
+             }
+         }
+         
+         /* Soon badge styling */
+         .soon-badge {
+             position: absolute;
+             top: 20px;
+             right: 20px;
+             background-color: rgba(255, 59, 63, 0.85);
+             color: white;
+             padding: 8px 20px;
+             border-radius: 5px;
+             font-weight: bold;
+             font-size: 18px;
+             z-index: 10;
+             transform: rotate(5deg);
+             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+         }
+         
+         .class-thumb {
+             position: relative;
+             display: block;
+         }
+     </style>
+</head>
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
+
+    <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="white-text" href="index.html">dylieasy</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link smoothScroll">Home</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a href="#class" class="nav-link smoothScroll">KITS</a>
+                    </li>
+                </ul>
+                <ul class="social-icon ml-lg-3">
+                    <li><a href="https://www.instagram.com/dyli.easy/" class="fa fa-instagram" target="_blank"></a></li>
+                    <li style="position: relative;">
+                        <a href="javascript:void(0);" class="fa fa-envelope" onclick="copyEmail()" title="Click to copy email"></a>
+                        <span id="copied-text" style="display: none; position: absolute; top: 30px; left: 50%; transform: translateX(-50%); font-size: 12px; color: white; background: black; padding: 3px 3px; border-radius: 4px; white-space: nowrap;">Mail Copied</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO Section -->
+    <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto col-12">
+                    <div class="hero-text mt-5 text-center">
+                        <h1 class="welcome-text" data-aos="fade-up" data-aos-delay="500">Welcome to my world</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-5 text-center">
+                    <p class="copyright-text"> dyli.easy</p>
+                </div>
+                <div class="col-lg-4 col-md-5 text-center">
+                    <p>
+                        <i class="fa fa-envelope-o mr-1"></i>
+                        <a href="mailto:dyli.prod@gmail.com">dyli.prod@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>
