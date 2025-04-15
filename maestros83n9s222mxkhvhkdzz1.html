@@ -177,26 +177,16 @@ https://www.tooplate.com/view/2119-gymso-fitness
      
      <script>
         document.getElementById('downloadBtn').addEventListener('click', function() {
-            // S3 bucket URL for the maestro.zip file - replace with your actual S3 URL
-            const downloadUrl = "https://dyli-store-downloads.s3.amazonaws.com/maestro.zip";
+            // S3 bucket URL for the maestro.zip file with eu-north-1 region
+            const downloadUrl = "https://dyli-store-downloads.s3.eu-north-1.amazonaws.com/maestro.zip";
             
-            // Create a hidden anchor element to trigger the download
-            const downloadLink = document.createElement('a');
-            downloadLink.href = downloadUrl;
-            downloadLink.download = 'maestro.zip';
-            downloadLink.style.display = 'none';
-            document.body.appendChild(downloadLink);
+            // First initiate the download in a new window/tab
+            const downloadWindow = window.open(downloadUrl, '_blank');
             
-            // Trigger the click event to start the download
-            downloadLink.click();
-            
-            // Remove the anchor element after download starts
-            document.body.removeChild(downloadLink);
-            
-            // Redirect to index.html after a short delay to ensure download starts
+            // Then redirect the current page after a longer delay (2 seconds)
             setTimeout(function() {
                 window.location.href = 'index.html';
-            }, 500);
+            }, 2000);
         });
      </script>
 </body>
