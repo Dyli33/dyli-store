@@ -40,6 +40,11 @@
                 font-size: 300% !important;
                 line-height: 1.2; /* Adjusted line height for better readability */
             }
+            
+            /* Hide the loopkit image on mobile devices */
+            .mobile-hidden {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -152,7 +157,7 @@
             </div>
 
             <!-- Image on the right -->
-            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center" >
+            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center mobile-hidden" >
                 <img src="images/anarchy-art.jpg" alt="Loopkit Image" class="img-fluid rounded-corner" />
             </div>
         </div>
