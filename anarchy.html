@@ -12,6 +12,31 @@
     <link rel="stylesheet" href="css/tooplate-gymso-style.css"> <!-- Custom styling -->
     <link rel="icon" href="images/favicon-32x32.png" type="image/png">
 
+    <!-- Mobile Welcome Text Size Fix -->
+    <style>
+        @media (max-width: 767px) {
+            .welcome-text {
+                font-size: 100px !important;
+                font-weight: 800;
+                line-height: 1.1;
+                margin: 35px 0;
+                padding: 0;
+            }
+            
+            /* Make sure mobile devices don't show horizontal scrollbars */
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+            }
+            
+            /* Hero section adjustments for larger text */
+            .hero {
+                min-height: 90vh;
+                padding: 30px 0;
+            }
+        }
+    </style>
+
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
 
