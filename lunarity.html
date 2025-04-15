@@ -175,7 +175,7 @@
                 
  <!-- Add to Cart Button below the description -->
 <div class="text-center" style="margin-top: 70px;">
-    <button class="btn custom-btn bg-color mt-3" style="font-size: 16px; padding: 13px 25px;">Coming Soon</button>
+    <button class="btn custom-btn bg-color mt-3" style="font-size: 16px; padding: 13px 25px;" data-toggle="modal" data-target="#membershipForm">NOTIFY ME</button>
 </div>
 
             </div>
@@ -282,6 +282,30 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 </footer>
 
+<!-- MODAL -->
+<div class="modal fade" id="membershipForm" tabindex="-1" role="dialog" aria-labelledby="membershipFormLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="membershipFormLabel">Sign up</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="membership-form webform" id="signupForm">
+                    <input type="text" class="form-control" id="name" name="cf-name" placeholder="Name" required>
+                    <input type="email" class="form-control" id="email" name="cf-email" placeholder="Email" required>
+                    <input type="text" class="form-control" name="cf-instagram" placeholder="Instagram @ (optional)">
+                    <button type="submit" class="form-control" id="submit-button">Submit</button>
+                    <div id="form-message" class="mt-3" style="display: none;"></div>
+                    <p class="text-muted small mt-3">By sharing your email, you agree to receive updates and exclusive offers from us.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- SCRIPTS -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -289,5 +313,93 @@ document.addEventListener("DOMContentLoaded", function () {
     <script src="js/smoothscroll.js"></script>
     <script src="js/custom.js"></script>
 
+    <!-- Producer Counter and Modal Functionality -->
+    <script>
+    // Replace this with your actual API Gateway URL
+    const API_URL = "https://j7ddpxwak4.execute-api.eu-north-1.amazonaws.com/prod";
+    
+    // Wait for DOM to be ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up form submission handler for signup form
+        const signupForm = document.getElementById("signupForm");
+        if (signupForm) {
+            signupForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get form data
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const instagram = document.querySelector("input[name='cf-instagram']").value.trim() || "Not provided";
+
+                // Validate required fields
+                if (!name || !email) {
+                    alert("Please enter your name and email!");
+                    return;
+                }
+
+                // Create data object
+                const formData = {
+                    name: name,
+                    email: email,
+                    instagram: instagram
+                };
+
+                // Show processing state
+                const submitButton = document.getElementById("submit-button");
+                submitButton.disabled = true;
+                submitButton.textContent = "Processing...";
+                
+                // Clear previous messages
+                const formMessage = document.getElementById("form-message");
+                formMessage.style.display = "none";
+
+                // Send data to API Gateway
+                fetch(`${API_URL}/register`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Submit";
+                    
+                    if (data.success) {
+                        // Reset form after submission
+                        signupForm.reset();
+
+                        // Show success message
+                        formMessage.innerHTML = "Thank you for signing up! You'll receive your free loops soon.";
+                        formMessage.style.display = "block";
+                        formMessage.style.color = "green";
+                        
+                        // Close the modal after 1 second
+                        setTimeout(() => {
+                            $('#membershipForm').modal('hide');
+                            formMessage.style.display = "none";
+                        }, 1000);
+                    } else {
+                        formMessage.innerHTML = data.message || "Something went wrong. Please try again.";
+                        formMessage.style.display = "block";
+                        formMessage.style.color = "red";
+                    }
+                })
+                .catch(error => {
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Submit";
+                    
+                    console.error("Error submitting form:", error);
+                    formMessage.innerHTML = "Network error. Please try again.";
+                    formMessage.style.display = "block";
+                    formMessage.style.color = "red";
+                });
+            });
+        }       
+    });
+    </script>
 </body>
 </html>

@@ -70,6 +70,14 @@
              position: relative;
              display: block;
          }
+         
+         /* About Me text positioning */
+         .aboutme-text h2 {
+             color: white;
+             margin-bottom: 30px;
+             font-size: 72px;
+             margin-top: -50px; /* Move only the About Me text higher */
+         }
      </style>
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
@@ -107,15 +115,26 @@
     <section class="aboutme d-flex flex-column justify-content-center align-items-center" id="aboutme" style="padding-top: 0; margin-top: 0; height: 100vh; overflow: hidden; background-color: #121314;">
         <div class="container" style="margin-top: 0;">
             <div class="row align-items-center" style="margin-bottom: 30px;">
-                <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center" style="padding-top: 150px;">
+                <div class="col-lg-5 col-md-5 col-12 d-flex justify-content-center align-items-center" style="padding-top: 120px;">
                     <div class="aboutme-photo" data-aos="fade-right" data-aos-delay="300">
-                        <img src="images/aboutme-photo.jpg" alt="About Me" class="img-fluid rounded-corner" style="max-width: 65%; height: auto;">
+                        <img src="images/aboutme-photo.jpg" alt="About Me" class="img-fluid rounded-corner" style="max-width: 75%; height: auto;">
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12 text-center" style="padding-left: 50px;">
-                    <div class="aboutme-text" data-aos="fade-left" data-aos-delay="300">
-                        <h2 style="color: white; margin-bottom: 30px; font-size: 72px;">About Me</h2>
-                        <p style="color: #cab8a4;">Hello! I'm Dyli, a passionate creator and innovator. Welcome to my world where I share my journey, ideas, and creations. Feel free to explore and connect with me!</p>
+                <div class="col-lg-7 col-md-7 col-12" style="padding-left: 0; padding-right: 20px;">
+                    <div class="aboutme-text" data-aos="fade-left" data-aos-delay="300" style="margin-top: 100px; max-width: 100%;">
+                        <h2 style="text-align: left;">About Me</h2>
+                        <p style="color: #cab8a4; text-align: left; line-height: 1.6; margin-bottom: 20px; font-size: 1.05rem;">
+                            I'm a 21-year-old music producer from Poland, and I've been creating music since I turned 18—spending all my birthday money back then on my first setup.
+                        </p>
+                        <p style="color: #cab8a4; text-align: left; line-height: 1.6; margin-bottom: 20px; font-size: 1.05rem;">
+                            Since that day, I've been obsessed with crafting unique sounds and pushing my creativity to new levels. I mainly focus on making emotional, dark, and fast-paced melodies that stand out, with a strong emphasis on originality and texture.
+                        </p>
+                        <p style="color: #cab8a4; text-align: left; line-height: 1.6; margin-bottom: 20px; font-size: 1.05rem;">
+                            I work directly with artists in the studio and also collaborate remotely with other producers and rappers through email and close industry connections. Over the years, I've built a reputation for delivering high-quality loops that bring real emotion and energy into tracks.
+                        </p>
+                        <p style="color: #cab8a4; text-align: left; line-height: 1.6;">
+                            This site is where I share my loop kits, showcase my sound, and connect with artists and producers who are looking for something different. If you're searching for melodies that cut through the noise, you're in the right place.
+                        </p>
                     </div>
                 </div>
             </div>
