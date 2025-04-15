@@ -7,7 +7,7 @@
      <meta name="description" content="">
      <meta name="keywords" content="">
      <meta name="author" content="">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -17,89 +17,20 @@
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-gymso-style.css">
      
-     <!-- Mobile Responsiveness Fix -->
+     <!-- Mobile Welcome Text Size Fix -->
      <style>
-         html, body {
-             overflow-x: hidden;
-             width: 100%;
-             position: relative;
-         }
-         
          @media (max-width: 767px) {
-             /* Page container adjustments */
-             .container {
-                 width: 100%;
-                 max-width: 100%;
-                 padding-left: 15px;
-                 padding-right: 15px;
-                 overflow-x: hidden;
-             }
-             
-             /* Navbar mobile adjustments */
-             .navbar {
-                 width: 100%;
-                 max-width: 100vw;
-                 padding: 10px 0;
-             }
-             
-             .navbar .container {
-                 padding: 0 10px;
-             }
-             
-             .navbar-brand, .white-text {
-                 font-size: 18px;
-             }
-             
-             /* Welcome text size adjustment - make it bigger and wrap to 3 lines */
              .welcome-text {
-                 font-size: 42px !important;
-                 line-height: 1.1;
-                 padding: 0 15px;
-                 margin-top: 20px;
+                 font-size: 45px !important;
                  font-weight: 700;
-                 display: flex;
-                 flex-direction: column;
-                 white-space: pre-line;
-                 text-align: center;
+                 line-height: 1.2;
+                 margin: 20px 0;
              }
              
-             /* Hero section adjustments */
-             .hero {
-                 width: 100%;
-                 max-width: 100%;
-                 padding-top: 30px;
-                 padding-bottom: 30px;
-             }
-             
-             /* Make all content fit the viewport */
-             .row {
-                 margin-left: 0;
-                 margin-right: 0;
-                 width: 100%;
-             }
-             
-             /* Adjust all sections to proper width */
-             section {
-                 width: 100%;
-                 max-width: 100%;
+             /* Make sure mobile devices don't show horizontal scrollbars */
+             html, body {
                  overflow-x: hidden;
-             }
-             
-             /* Make images responsive */
-             img {
-                 max-width: 100%;
-                 height: auto;
-             }
-             
-             /* Fix social icons on mobile */
-             .social-icon {
-                 margin-top: 5px;
-                 margin-left: 0 !important;
-             }
-             
-             /* Ensure forms fit mobile width */
-             .form-control {
-                 max-width: 100%;
+                 width: 100%;
              }
          }
      </style>
