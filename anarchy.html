@@ -40,17 +40,6 @@
                 font-size: 300% !important;
                 line-height: 1.2; /* Adjusted line height for better readability */
             }
-            
-            /* Hide the image on mobile */
-            .col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center:has(img[src="images/anarchy-art.jpg"]) {
-                display: none !important;
-                visibility: hidden !important;
-                height: 0 !important;
-                width: 0 !important;
-                overflow: hidden !important;
-                opacity: 0 !important;
-                position: absolute !important;
-            }
         }
     </style>
 </head>
@@ -187,15 +176,34 @@
 
             <!-- Audio Loop 1 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio1" controls>
+                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
+                    <audio id="audio1" controls preload="metadata">
                         <source src="audio/loop1anarchy.mp3" type="audio/mpeg">
-            <!-- Audio Loop 3 -->rc="audio/loop1anarchy.wav" type="audio/wav">
-            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio3" controls>
+                        <source src="audio/loop1anarchy.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p>Loop 1</p>
+                </div>
+            </div>
+
+            <!-- Audio Loop 2 -->
+            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
+                    <audio id="audio2" controls preload="metadata">
+                        <source src="audio/loop2anarchy.mp3" type="audio/mpeg">
+                        <source src="audio/loop2anarchy.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p>Loop 2</p>
+                </div>
+            </div>
+
+            <!-- Audio Loop 2 -->
+            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                <div class="audio-preview" style="text-align: center; background-color: #171819; padding: 15px; border-radius: 10px;">
+                    <audio id="audio2" controls preload="metadata">
                         <source src="audio/loop3anarchy.mp3" type="audio/mpeg">
-                        <source src="audio/loop3anarchy.wav" type="audio/wav">
+                        <source src="audio/loop2anarchy.wav" type="audio/wav">
                         Your browser does not support the audio element.
                     </audio>
                     <p>Loop 3</p>
