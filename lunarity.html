@@ -41,147 +41,142 @@
                 font-size: 300% !important;
                 line-height: 1.2; /* Adjusted line height for better readability */
             }
-        }
-    </style>
-</head>
+        }   
+    </style>/* Mobile layout adjustments for the image and buy button */
+</head>     .mobile-image-container {
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
-
-   <!-- MENU BAR -->
+                margin-bottom: 30px;
+   <!-- MENU BAR -->-align: center;
    <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-
+            
         <a class="white-text" href="index.html">dylieasy</a>
-
+                order: 2;
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
-
+        </button>isplay: flex;
+                flex-direction: column;
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-lg-auto">
-                <li class="nav-item">
+                <li class="nav-item">mg {
                     <a href="#home" class="nav-link smoothScroll">Home</a>
-                </li>
-
+                </li>n: 0 auto;
+            }
               
-
+    </style>
                 
-
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
                 
-
-            </ul>
+   <!-- MENU BAR -->
+            </ul>vbar navbar-expand-lg fixed-top">
             <ul class="social-icon ml-lg-3">
                <!-- Instagram Icon -->
 <li><a href="https://www.instagram.com/dyli.easy/" class="fa fa-instagram" target="_blank"></a></li>
 
-            
+            ton class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                <!-- Mail Icon (Click to Copy) -->
-<li style="position: relative;">
+<li style="position: relative;">toggler-icon"></span>
     <a href="javascript:void(0);" class="fa fa-envelope" onclick="copyEmail()" title="Click to copy email"></a>
     <span id="copied-text" style="display: none; position: absolute; top: 30px; left: 50%; transform: translateX(-50%); font-size: 12px; color: white; background: black; padding: 3px 3px; border-radius: 4px; white-space: nowrap;">Mail Copied</span>
-</li>
-
-            </ul>
-            
-            <script>
+</li>   <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-lg-auto">
+            </ul>li class="nav-item">
+                    <a href="#home" class="nav-link smoothScroll">Home</a>
+            <script>>
                 function copyEmail() {
                     const email = "dyli.prod@gmail.com"; // Change this to your actual email
                     navigator.clipboard.writeText(email).then(() => {
                         const copiedText = document.getElementById("copied-text");
                         copiedText.style.display = "block";
-            
+                
                         setTimeout(() => {
                             copiedText.style.display = "none";
                         }, 1000); // Hides the text after 1.5 seconds
+                    }).catch(err => {>
+                        console.error("Failed to copy email: ", err);gram" target="_blank"></a></li>
+                    });
+                }
+            </script>ail Icon (Click to Copy) -->
+            osition: relative;">
+            "javascript:void(0);" class="fa fa-envelope" onclick="copyEmail()" title="Click to copy email"></a>
+        </div>copied-text" style="display: none; position: absolute; top: 30px; left: 50%; transform: translateX(-50%); font-size: 12px; color: white; background: black; padding: 3px 3px; border-radius: 4px; white-space: nowrap;">Mail Copied</span>
+</li>
+    </div>
+            </ul>
+            
+</nav>      <script>
+                function copyEmail() {
+  <!-- Hero Section for Maestro -->dyli.prod@gmail.com"; // Change this to your actual email
+  <section class="hero d-flex flex-column justify-content-center align-items-center" id="home" style="background-image: url('images/lunarity-background.jpg'); background-size: cover; background-position: center; height: 300px; text-align: center;">
+    <div class="bg-overlay"></div>edText = document.getElementById("copied-text");
+    <div class="container">iedText.style.display = "block";
+        <h1 class="hero-title" data-aos="fade-up">Loopkit vol.2 Lunarity</h1>
+        <p class="hero-description" data-aos="fade-up" data-aos-delay="500">Heavy, Emotional, Cinematic</p>
+    </div>                  copiedText.style.display = "none";
+</section>              }, 1000); // Hides the text after 1.5 seconds
                     }).catch(err => {
                         console.error("Failed to copy email: ", err);
                     });
-                }
-            </script>
-            
-            
-        </div>
-
-    </div>
-
-
-</nav>
-
-  <!-- Hero Section for Maestro -->
-  <section class="hero d-flex flex-column justify-content-center align-items-center" id="home" style="background-image: url('images/lunarity-background.jpg'); background-size: cover; background-position: center; height: 300px; text-align: center;">
-    <div class="bg-overlay"></div>
-    <div class="container">
-        <h1 class="hero-title" data-aos="fade-up">Loopkit vol.2 Lunarity</h1>
-        <p class="hero-description" data-aos="fade-up" data-aos-delay="500">Heavy, Emotional, Cinematic</p>
-    </div>
-</section>
-
-
-
 <section class="details-section">
     <div class="container">
-        <div class="row">
+        <div class="row mobile-row">
             <!-- Description on the left -->
-            <div class="col-lg-6 col-md-6 col-12" data-aos="fade-up">
+            <div class="col-lg-6 col-md-6 col-12 mobile-description-container" data-aos="fade-up">
                 <h2>Details about Loopkit vol.2 Lunarity</h2>
-
+    </div>
                 <p>
                     This pack contains 15 placement-ready loops in the style of Playboy Carti, Future, UFO361. 
                     Perfect for dark, gritty, atmospheric, and synthetic beats.
                 </p>
-                
-                <ul data-aos="fade-up" data-aos-delay="400">
-    <li style="font-weight: bold;">15 high-quality, placement-ready loops</li>
-    <li style="font-weight: bold;">Perfect for dark synth trap</li> 
-    <li style="font-weight: bold;">Compatible with all DAWs</li>
-    <li style="font-weight: bold;">Key and BPM labeled</li>
-    <li style="font-weight: bold;">Mixed, ready to use without any tweaking.</li>
-    <li style="font-weight: bold;">Each loop comes with separated stems for easy customization</li>
-</ul>
-
-                
+                ion for Maestro -->
+                <ul data-aos="fade-up" data-aos-delay="400">nter align-items-center" id="home" style="background-image: url('images/lunarity-background.jpg'); background-size: cover; background-position: center; height: 300px; text-align: center;">
+                    <li style="font-weight: bold;">15 high-quality, placement-ready loops</li>
+                    <li style="font-weight: bold;">Perfect for dark synth trap</li> 
+                    <li style="font-weight: bold;">Compatible with all DAWs</li>Lunarity</h1>
+                    <li style="font-weight: bold;">Key and BPM labeled</li>-aos-delay="500">Heavy, Emotional, Cinematic</p>
+                    <li style="font-weight: bold;">Mixed, ready to use without any tweaking.</li>
+                    <li style="font-weight: bold;">Each loop comes with separated stems for easy customization</li>
+                </ul>
 
                 <p style="margin-top: 40px;">All sounds and samples in this kit are royalty free under 1,000,000 streams or unless major placement.</p>
+<section class="details-section">
+                <!-- Add to Cart Button below the description -->
+                <div class="text-center" style="margin-top: 70px;">        <div class="row">
+                    <button class="btn custom-btn bg-color mt-3" style="font-size: 16px; padding: 13px 25px;">Buy Lunarity - 30$</button>            <!-- Description on the left -->
+                </div> class="col-lg-6 col-md-6 col-12" data-aos="fade-up">
+            </div>narity</h2>
 
-
-                
- <!-- Add to Cart Button below the description -->
-<div class="text-center" style="margin-top: 70px;">
-    <button class="btn custom-btn bg-color mt-3" style="font-size: 16px; padding: 13px 25px;">Buy Lunarity - 30$</button>
-</div>
-
-            </div>
-
-            <!-- Image on the right -->
-            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center" >
-                <img src="images/lunarity-art.jpg" alt="Loopkit Image" class="img-fluid rounded-corner" />
-            </div>
-        </div>
-    </div>
+            <!-- Image on the right (on desktop) or above (on mobile) -->
+            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center mobile-image-container">              This pack contains 15 placement-ready loops in the style of Playboy Carti, Future, UFO361. 
+                <img src="images/lunarity-art.jpg" alt="Loopkit Image" class="img-fluid rounded-corner" />                    Perfect for dark, gritty, atmospheric, and synthetic beats.
+            </div>p>
+        </div>                
+    </div>data-aos-delay="400">
 </section>
 
+t-weight: bold;">Compatible with all DAWs</li>
+"font-weight: bold;">Key and BPM labeled</li>
+yle="font-weight: bold;">Mixed, ready to use without any tweaking.</li>
+yle="font-weight: bold;">Each loop comes with separated stems for easy customization</li>
+</ul>
 
-
-
-
-
-
-<!-- AUDIO PREVIEWS Section -->
+<!-- AUDIO PREVIEWS Section -->                
 <section class="audio-previews section" id="audio-previews" style="background-color: #171819; color: white;">
-    <div class="container">
+    <div class="container">                <p style="margin-top: 40px;">All sounds and samples in this kit are royalty free under 1,000,000 streams or unless major placement.</p>
         <div class="row">
             <div class="col-lg-12 col-12 text-center mb-5">
                 <h2>Preview the loops</h2>
                 <p data-aos="fade-up" data-aos-delay="400">Check if they match your vibe</p>
-            </div>
-
+            </div>yle="margin-top: 70px;">
+stom-btn bg-color mt-3" style="font-size: 16px; padding: 13px 25px;">Buy Lunarity - 30$</button>
             <!-- Audio Loop 1 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
                 <div class="audio-preview" style="text-align: center; background-color: #171819;">
                     <audio id="audio1" controls>
-                        <source src="audio/loop1lunarity.mp3" type="audio/mpeg">
-                        <source src="audio/loop1lunarity.wav" type="audio/wav">
-                        Your browser does not support the audio element.
+                        <source src="audio/loop1lunarity.mp3" type="audio/mpeg">            <!-- Image on the right -->
+                        <source src="audio/loop1lunarity.wav" type="audio/wav">col-md-6 col-12 d-flex justify-content-center align-items-center mobile-image-container" >
+                        Your browser does not support the audio element.unded-corner" />
                     </audio>
                     <p>Loop 1</p>
                 </div>
@@ -194,54 +189,75 @@
                         <source src="audio/loop2lunarity.mp3" type="audio/mpeg">
                         <source src="audio/loop2lunarity.wav" type="audio/wav">
                         Your browser does not support the audio element.
-                    </audio>
+                    </audio>r: white;">
                     <p>Loop 2</p>
                 </div>
             </div>
 
-            <!-- Audio Loop 3 -->
+            <!-- Audio Loop 3 -->"fade-up" data-aos-delay="400">Check if they match your vibe</p>
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
                 <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio3" controls>
-                        <source src="audio/loop3lunarity.mp3" type="audio/mpeg">
-                        <source src="audio/loop3lunarity.wav" type="audio/wav">
+                    <audio id="audio3" controls>udio Loop 1 -->
+                        <source src="audio/loop3lunarity.mp3" type="audio/mpeg">            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+                        <source src="audio/loop3lunarity.wav" type="audio/wav">-preview" style="text-align: center; background-color: #171819;">
                         Your browser does not support the audio element.
                     </audio>
-                    <p>Loop 3</p>
+                    <p>Loop 3</p>lunarity.wav" type="audio/wav">
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const audios = document.querySelectorAll("audio");
-
-    audios.forEach(audio => {
-        audio.addEventListener("play", () => {
-            audios.forEach(otherAudio => {
+<script>udio Loop 2 -->
+document.addEventListener("DOMContentLoaded", function () {iv class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+    const audios = document.querySelectorAll("audio");      <div class="audio-preview" style="text-align: center; background-color: #171819;">
+          <audio id="audio2" controls>
+    audios.forEach(audio => {                        <source src="audio/loop2lunarity.mp3" type="audio/mpeg">
+        audio.addEventListener("play", () => {                <source src="audio/loop2lunarity.wav" type="audio/wav">
+            audios.forEach(otherAudio => {udio element.
                 if (otherAudio !== audio) {
-                    otherAudio.pause();
+                    otherAudio.pause();                    <p>Loop 2</p>
                     otherAudio.currentTime = 0; // Reset to beginning
                 }
             });
         });
-    });
-});
-</script>
-
-
- <!-- FOOTER -->
-<footer class="site-footer">
-    <div class="container">
-        <div class="row justify-content-center">
-        
+    });-6 col-12" data-aos="fade-up" data-aos-delay="800">
+}); background-color: #171819;">
+</script>   <audio id="audio3" controls>
+         <source src="audio/loop3lunarity.mp3" type="audio/mpeg">
+             <source src="audio/loop3lunarity.wav" type="audio/wav">
+ <!-- FOOTER -->                 Your browser does not support the audio element.
+<footer class="site-footer">                 </audio>
+    <div class="container">           <p>Loop 3</p>
+        <div class="row justify-content-center">                </div>
+                    </div>
             <!-- Copyright Section (Centered) -->
             <div class="col-lg-4 col-md-5 text-center">
                 <p class="copyright-text"> dyli.easy</p>
             </div>
 
+            <!-- Contact Section (Centered) -->ction () {
+            <div class="col-lg-4 col-md-5 text-center">
+                <p>
+                    <i class="fa fa-envelope-o mr-1"></i>(audio => {
+                    <a href="mailto:your-email@example.com">dyli.prod@gmail.com</a>        audio.addEventListener("play", () => {
+                </p>
+            </div>
+ otherAudio.pause();
+        </div>to beginning
+    </div>
+</footer>
+
+    <!-- SCRIPTS -->    });
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>nt-center">
             <!-- Contact Section (Centered) -->
             <div class="col-lg-4 col-md-5 text-center">
                 <p>
