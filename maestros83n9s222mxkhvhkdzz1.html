@@ -158,7 +158,7 @@ https://www.tooplate.com/view/2119-gymso-fitness
                     <h1 class="welcome-text" data-aos="fade-up" data-aos-delay="500">Thank you!</h1>
                     <p class="hero-description" data-aos="fade-up" data-aos-delay="500">Loopkit was sent to your email adress. Enjoy! </p>
                     <div class="mt-5" data-aos="fade-up" data-aos-delay="600">
-                        <a href="index.html" class="btn home-btn">Back to Home</a>
+                        <button id="downloadBtn" class="btn home-btn">Download Now</button>
                     </div>
                 </div>
             </div>
@@ -174,6 +174,41 @@ https://www.tooplate.com/view/2119-gymso-fitness
      <script src="js/aos.js"></script>
      <script src="js/smoothscroll.js"></script>
      <script src="js/custom.js"></script>
+     
+     <!-- Download and Redirect Script -->
+     <script>
+        // Prevent back navigation to this page
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function() {
+            history.pushState(null, null, document.URL);
+        });
+        
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            // Create a hidden download link
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'downloads/loopkit.zip'; // Path to your zip file
+            downloadLink.download = 'loopkit.zip';
+            downloadLink.style.display = 'none';
+            document.body.appendChild(downloadLink);
+            
+            // Trigger the download
+            downloadLink.click();
+            
+            // Remove the link element
+            document.body.removeChild(downloadLink);
+            
+            // Redirect after a short delay (to allow download to start)
+            setTimeout(function() {
+                window.location.replace('index.html'); // Replace history so user can't go back
+            }, 1000);
+        });
+        
+        // If the page loads directly (not from download button click)
+        // Redirect immediately to prevent direct access to download page
+        if (document.referrer === '' || !document.referrer.includes(window.location.hostname)) {
+            window.location.replace('index.html');
+        }
+     </script>
 
 </body>
 </html>
