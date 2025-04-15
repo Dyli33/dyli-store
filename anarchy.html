@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- Assuming you use bootstrap for your styling -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/tooplate-gymso-style.css"> <!-- Custom styling -->
+    <link rel="stylesheet" href="css/tooplate-gymso-style.css">
     <link rel="icon" href="images/favicon-32x32.png" type="image/png">
 
     <!-- Mobile Welcome Text Size Fix -->
@@ -33,6 +33,25 @@
             .hero {
                 min-height: 90vh;
                 padding: 30px 0;
+            }
+            
+            /* Anarchy text size reduction */
+            .anarchy-title {
+                font-size: 70%; /* 30% smaller than normal size */
+            }
+            
+            /* Improve image symmetry */
+            .product-image {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .product-image img {
+                max-width: 100%;
+                margin: 0 auto;
+                object-fit: contain;
+                object-position: center;
             }
         }
     </style>
@@ -147,8 +166,8 @@
             </div>
 
             <!-- Image on the right -->
-            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center" >
-                <img src="images/anarchy-art.jpg" alt="Loopkit Image" class="img-fluid rounded-corner" />
+            <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center align-items-center product-image" >
+                <img src="images/anarchy-art.jpg" class="img-fluid" alt="Anarchy Product Image">
             </div>
         </div>
     </div>
@@ -174,70 +193,70 @@
                 <div class="audio-preview" style="text-align: center; background-color: #171819;">
                     <audio id="audio1" controls>
                         <source src="audio/loop1anarchy.mp3" type="audio/mpeg">
-                        <source src="audio/loop1anarchy.wav" type="audio/wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                    <p>Loop 1</p>
-                </div>
-            </div>
-
-            <!-- Audio Loop 2 -->
-            <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio2" controls>
-                        <source src="audio/loop2anarchy.mp3" type="audio/mpeg">
-                        <source src="audio/loop2anarchy.wav" type="audio/wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                    <p>Loop 2</p>
-                </div>
-            </div>
-
-            <!-- Audio Loop 3 -->
+            <!-- Audio Loop 3 -->rc="audio/loop1anarchy.wav" type="audio/wav">
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
                 <div class="audio-preview" style="text-align: center; background-color: #171819;">
                     <audio id="audio3" controls>
                         <source src="audio/loop3anarchy.mp3" type="audio/mpeg">
                         <source src="audio/loop3anarchy.wav" type="audio/wav">
                         Your browser does not support the audio element.
+                    </audio>2 -->
+                    <p>Loop 3</p>col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                </div>lass="audio-preview" style="text-align: center; background-color: #171819;">
+            </div>  <audio id="audio2" controls>
+        </div>          <source src="audio/loop2anarchy.mp3" type="audio/mpeg">
+    </div>              <source src="audio/loop2anarchy.wav" type="audio/wav">
+</section>              Your browser does not support the audio element.
                     </audio>
-                    <p>Loop 3</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
+<script>            <p>Loop 2</p>
 document.addEventListener("DOMContentLoaded", function () {
     const audios = document.querySelectorAll("audio");
 
-    audios.forEach(audio => {
-        audio.addEventListener("play", () => {
-            audios.forEach(otherAudio => {
-                if (otherAudio !== audio) {
-                    otherAudio.pause();
-                    otherAudio.currentTime = 0; // Reset to beginning
-                }
-            });
-        });
-    });
-});
-</script>
-
-
+    audios.forEach(audio => { -->
+        audio.addEventListener("play", () => {12" data-aos="fade-up" data-aos-delay="800">
+            audios.forEach(otherAudio => { style="text-align: center; background-color: #171819;">
+                if (otherAudio !== audio) {rols>
+                    otherAudio.pause();dio/loop3anarchy.mp3" type="audio/mpeg">
+                    otherAudio.currentTime = 0; // Reset to beginningdio/wav">
+                }       Your browser does not support the audio element.
+            });     </audio>
+        });         <p>Loop 3</p>
+    });         </div>
+});         </div>
+</script>/div>
+    </div>
+</section>
  <!-- FOOTER -->
 <footer class="site-footer">
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container">DOMContentLoaded", function () {
+        <div class="row justify-content-center">dio");
         
             <!-- Copyright Section (Centered) -->
             <div class="col-lg-4 col-md-5 text-center">
                 <p class="copyright-text"> dyli.easy</p>
+            </div> (otherAudio !== audio) {
+                    otherAudio.pause();
+            <!-- Contact Section (Centered) --> // Reset to beginning
+            <div class="col-lg-4 col-md-5 text-center">
+                <p>
+                    <i class="fa fa-envelope-o mr-1"></i>
+                    <a href="mailto:your-email@example.com">dyli.prod@gmail.com</a>
+                </p>
             </div>
 
-            <!-- Contact Section (Centered) -->
-            <div class="col-lg-4 col-md-5 text-center">
+        </div>
+    </div>ER -->
+</footer>lass="site-footer">
+    <div class="container">
+    <!-- SCRIPTS -->row justify-content-center">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>->
+    <script src="js/aos.js"></script>md-5 text-center">
+    <script src="js/smoothscroll.js"></script>i.easy</p>
+    <script src="js/custom.js"></script>
+
+</body>     <!-- Contact Section (Centered) -->
+</html>     <div class="col-lg-4 col-md-5 text-center">
                 <p>
                     <i class="fa fa-envelope-o mr-1"></i>
                     <a href="mailto:your-email@example.com">dyli.prod@gmail.com</a>
