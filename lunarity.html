@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="css/tooplate-gymso-style.css"> <!-- Custom styling -->
     <link rel="icon" href="images/favicon-32x32.png" type="image/png">
 
-
+   <!-- Add Wavesurfer.js library for waveform audio players -->
+   <script src="https://unpkg.com/wavesurfer.js@6"></script>
+    
      <!-- Mobile Welcome Text Size Fix -->
      <style>
         @media (max-width: 767px) {
@@ -69,6 +71,40 @@
             .mobile-image-container img {
                 display: none;
             }
+        }
+        
+        /* Waveform Audio Player Styling */
+        .waveform-container {
+            width: 100%;
+            background-color: transparent;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .waveform {
+            height: 80px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+        
+        /* Add loading indicator styling */
+        .loading-indicator {
+            text-align: center;
+            color: #8d8d8d;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+        
+        /* Add error message styling */
+        .error-message {
+            color: #ff5a5a;
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: center;
         }
     </style>
 </head>
@@ -205,37 +241,34 @@
 
             <!-- Audio Loop 1 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio1" controls>
-                        <source src="audio/loop1lunarity.mp3" type="audio/mpeg">
-                        <source src="audio/loop1lunarity.wav" type="audio/wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                    <p>Loop 1</p>
+                <div class="waveform-container">
+                
+                    <div id="waveform1" class="waveform"></div>
+                    <div id="loading1" class="loading-indicator">Loading audio...</div>
+                    <div id="error1" class="error-message" style="display: none;"></div>
+                    <p style="margin-top: 10px; color: #cccccc; font-size: 14px; font-weight: bold;">LOOP1</p>
                 </div>
             </div>
 
             <!-- Audio Loop 2 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio2" controls>
-                        <source src="audio/loop2lunarity.mp3" type="audio/mpeg">
-                        <source src="audio/loop2lunarity.wav" type="audio/wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                    <p>Loop 2</p>
+                <div class="waveform-container">
+                  
+                    <div id="waveform2" class="waveform"></div>
+                    <div id="loading2" class="loading-indicator">Loading audio...</div>
+                    <div id="error2" class="error-message" style="display: none;"></div>
+                    <p style="margin-top: 10px; color: #cccccc; font-size: 14px; font-weight: bold;">LOOP2</p>
                 </div>
             </div>
 
             <!-- Audio Loop 3 -->
             <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
-                <div class="audio-preview" style="text-align: center; background-color: #171819;">
-                    <audio id="audio3" controls>
-                        <source src="audio/loop3lunarity.mp3" type="audio/mpeg">
-                        <source src="audio/loop3lunarity.wav" type="audio/wav">
-                        Your browser does not support the audio element.
-                    </audio>
-                    <p>Loop 3</p>
+                <div class="waveform-container">
+                 
+                    <div id="waveform3" class="waveform"></div>
+                    <div id="loading3" class="loading-indicator">Loading audio...</div>
+                    <div id="error3" class="error-message" style="display: none;"></div>
+                    <p style="margin-top: 10px; color: #cccccc; font-size: 14px; font-weight: bold;">LOOP1</p>
                 </div>
             </div>
         </div>
@@ -244,18 +277,173 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const audios = document.querySelectorAll("audio");
-
-    audios.forEach(audio => {
-        audio.addEventListener("play", () => {
-            audios.forEach(otherAudio => {
-                if (otherAudio !== audio) {
-                    otherAudio.pause();
-                    otherAudio.currentTime = 0; // Reset to beginning
+    // Audio tracks data - Try with both MP3 and WAV fallbacks
+    const audioTracks = [
+        {
+            id: 'waveform1',
+            url: 'audio/loop1lunarity.mp3',
+            fallbackUrl: 'audio/loop1lunarity.wav', // Fallback to WAV if MP3 fails
+            loadingId: 'loading1',
+            errorId: 'error1'
+        },
+        {
+            id: 'waveform2',
+            url: 'audio/loop2lunarity.mp3',
+            fallbackUrl: 'audio/loop2lunarity.wav', 
+            loadingId: 'loading2',
+            errorId: 'error2'
+        },
+        {
+            id: 'waveform3',
+            url: 'audio/loop3lunarity.mp3',
+            fallbackUrl: 'audio/loop3lunarity.wav',
+            loadingId: 'loading3',
+            errorId: 'error3'
+        }
+    ];
+    
+    // Store wavesurfer instances
+    const waveSurfers = [];
+    
+    // Check if audio files exist before trying to load them
+    function checkAudioExists(url) {
+        return new Promise((resolve, reject) => {
+            const req = new XMLHttpRequest();
+            req.open('HEAD', url, true);
+            req.onreadystatechange = function() {
+                if (req.readyState === 4) {
+                    if (req.status === 200) {
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+                }
+            };
+            req.onerror = function() {
+                resolve(false);
+            };
+            req.send();
+        });
+    }
+    
+    // Initialize wavesurfer for each track
+    async function initWavesurfer(track, index) {
+        // Show loading indicator
+        const loadingIndicator = document.getElementById(track.loadingId);
+        const errorMessage = document.getElementById(track.errorId);
+        
+        console.log(`Initializing wavesurfer for ${track.id} with URL: ${track.url}`);
+        
+        try {
+            // Check if primary audio file exists
+            let audioExists = await checkAudioExists(track.url);
+            let audioUrl = track.url;
+            
+            // If primary doesn't exist, try fallback
+            if (!audioExists && track.fallbackUrl) {
+                console.log(`Primary audio file ${track.url} not found, trying fallback ${track.fallbackUrl}`);
+                audioExists = await checkAudioExists(track.fallbackUrl);
+                if (audioExists) {
+                    audioUrl = track.fallbackUrl;
+                }
+            }
+            
+            if (!audioExists) {
+                throw new Error(`Audio file not found: ${track.url}`);
+            }
+            
+            const wavesurfer = WaveSurfer.create({
+                container: `#${track.id}`,
+                waveColor: '#8d8d8d',
+                progressColor: '#f13a11',
+                cursorColor: 'transparent',
+                barWidth: 2,
+                barRadius: 3,
+                barGap: 2,
+                height: 80,
+                responsive: true,
+                normalize: true,
+                backend: 'WebAudio',
+                interact: false  // Disable the default click behavior that seeks to position
+            });
+            
+            waveSurfers[index] = wavesurfer;
+            
+            // Log load start
+            console.log(`Starting to load audio for ${track.id} using URL: ${audioUrl}`);
+            
+            wavesurfer.on('error', function(err) {
+                console.error(`Error loading audio ${audioUrl}:`, err);
+                loadingIndicator.style.display = 'none';
+                errorMessage.textContent = 'Could not load audio file';
+                errorMessage.style.display = 'block';
+                
+                // Try with a different audio format as a last resort
+                const extensionMatch = audioUrl.match(/\.(mp3|wav|ogg)$/i);
+                if (extensionMatch) {
+                    const currentExtension = extensionMatch[1].toLowerCase();
+                    let alternativeUrl;
+                    
+                    if (currentExtension === 'mp3') {
+                        alternativeUrl = audioUrl.replace(/\.mp3$/i, '.wav');
+                    } else if (currentExtension === 'wav') {
+                        alternativeUrl = audioUrl.replace(/\.wav$/i, '.mp3');
+                    }
+                    
+                    if (alternativeUrl) {
+                        console.log(`Trying alternative format: ${alternativeUrl}`);
+                        wavesurfer.load(alternativeUrl);
+                    }
                 }
             });
-        });
+            
+            // Update duration when audio is ready
+            wavesurfer.on('ready', function() {
+                console.log(`Audio for ${track.id} loaded successfully`);
+                loadingIndicator.style.display = 'none';
+                errorMessage.style.display = 'none';
+            });
+            
+            // Load the audio file
+            wavesurfer.load(audioUrl);
+            
+            // Click on waveform to play/pause only, without seeking
+            document.querySelector(`#${track.id}`).addEventListener('click', function(e) {
+                // Only allow clicking when audio is loaded
+                if (!wavesurfer.isReady) {
+                    console.log(`Audio ${track.id} not ready yet`);
+                    return;
+                }
+                
+                // Prevent default waveform click behavior
+                e.preventDefault();
+                e.stopPropagation();
+                
+                pauseAllExcept(index);
+                wavesurfer.playPause();
+            });
+            
+        } catch (error) {
+            console.error(`Error creating wavesurfer for ${track.id}:`, error);
+            loadingIndicator.style.display = 'none';
+            errorMessage.textContent = error.message || 'Could not initialize audio player';
+            errorMessage.style.display = 'block';
+        }
+    }
+    
+    // Initialize all wavesurfers one by one
+    audioTracks.forEach((track, index) => {
+        initWavesurfer(track, index);
     });
+    
+    // Function to pause all waveforms except one
+    function pauseAllExcept(exceptIndex) {
+        waveSurfers.forEach((ws, i) => {
+            if (ws && ws.isReady && i !== exceptIndex && ws.isPlaying()) {
+                ws.pause();
+            }
+        });
+    }
 });
 </script>
 
