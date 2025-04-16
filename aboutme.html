@@ -17,28 +17,15 @@
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-gymso-style.css">
      
-     <!-- Mobile Welcome Text Size Fix -->
+     <!-- Mobile Responsive Styles -->
      <style>
-         @media (max-width: 767px) {
-             .welcome-text {
-                 font-size: 100px !important; /* 20% increase from 90px = 108px */
-                 font-weight: 800;
-                 line-height: 1.1; /* Slightly adjusted for bigger text */
-                 margin: 35px 0;
-                 padding: 0;
-             }
-             
-             /* Make sure mobile devices don't show horizontal scrollbars */
-             html, body {
-                 overflow-x: hidden;
-                 width: 100%;
-             }
-             
-             /* Hero section adjustments for larger text */
-             .hero {
-                 min-height: 90vh; /* Increased to accommodate the larger text */
-                 padding: 30px 0;
-             }
+         /* General styles */
+         html, body {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+             background-color: #121314;
+             overflow-x: hidden;
          }
          
          /* Soon badge styling */
@@ -57,15 +44,6 @@
              box-shadow: 0 3px 8px rgba(0,0,0,0.2);
          }
          
-         /* Prevent white space at bottom */
-         html, body {
-             height: 100%;
-             margin: 0;
-             padding: 0;
-             overflow: hidden;
-             background-color: #121314; /* Darker background color */
-         }
-         
          .class-thumb {
              position: relative;
              display: block;
@@ -76,73 +54,70 @@
              color: white;
              margin-bottom: 30px;
              font-size: 72px;
-             margin-top: -50px; /* Move only the About Me text higher */
+             margin-top: -50px;
+         }
+
+         /* Mobile styles */
+         @media (max-width: 767px) {
+             .welcome-text {
+                 font-size: 90px !important;
+                 font-weight: 800;
+                 line-height: 1.1;
+                 margin: 20px 0;
+             }
+             
+             html, body {
+                 overflow-y: auto;
+                 overflow-x: hidden;
+                 width: 100%;
+             }
+             
+             .hero {
+                 min-height: 80vh;
+                 padding: 20px 0;
+             }
+             
+             .hero-title {
+                 font-size: 250% !important;
+                 line-height: 1.2;
+             }
+             
+             /* About Me section mobile styling */
+             .aboutme {
+                 height: auto !important;
+                 min-height: 100vh;
+                 padding: 80px 0 40px !important;
+             }
+             
+             .aboutme-text h2 {
+                 font-size: 48px;
+                 text-align: center !important;
+                 margin-top: 20px;
+             }
+             
+             .aboutme-text p {
+                 text-align: center !important;
+                 font-size: 1rem !important;
+                 padding: 0 15px;
+             }
+             
+             .aboutme-photo {
+                 text-align: center;
+                 margin-bottom: 30px;
+             }
+             
+             .aboutme-photo img {
+                 max-width: 85% !important;
+                 margin: 0 auto;
+             }
+             
+             /* Adjust column layout for mobile */
+             .col-lg-5.col-md-5.col-12, 
+             .col-lg-7.col-md-7.col-12 {
+                 padding: 0 15px !important;
+             }
          }
      </style>
-
-     <!-- Mobile Welcome Text Size Fix -->
-<style>
-    @media (max-width: 767px) {
-        .welcome-text {
-            font-size: 120px !important; /* 20% increase from 90px = 108px */
-            font-weight: 800;
-            line-height: 1.1; /* Slightly adjusted for bigger text */
-            margin: 35px 0;
-            padding: 0;
-        }
-        
-        /* Make sure mobile devices don't show horizontal scrollbars */
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-        }
-        
-        /* Hero section adjustments for larger text */
-        .hero {
-            min-height: 90vh; /* Increased to accommodate the larger text */
-            padding: 30px 0;
-        }
-        
-        /* Make the Loopkit title 3 times bigger on mobile only (1.2 × 2.5 = 3) */
-        .hero-title {
-            font-size: 300% !important;
-            line-height: 1.2; /* Adjusted line height for better readability */
-        }
-        
-        /* Hide maestro image on mobile devices */
-        .col-lg-6.col-md-6.col-12.d-flex.justify-content-center.align-items-center:has(img[src="images/maestro-art.jpg"]) {
-            display: none !important;
-            visibility: hidden !important;
-            height: 0 !important;
-            width: 0 !important;
-            overflow: hidden !important;
-            opacity: 0 !important;
-            position: absolute !important;
-        }
-        
-        /* Mobile layout adjustments for the image and buy button */
-        .mobile-image-container {
-            order: 1;
-            margin-bottom: 30px;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .mobile-description-container {
-            order: 2;
-        }
-        
-        .mobile-row {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .mobile-image-container img {
-            max-width: 80%;
-            margin: 0 auto;
-        }
-    }
-</style>
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
 
@@ -176,16 +151,16 @@
     </nav>
 
     <!-- ABOUT ME Section -->
-    <section class="aboutme d-flex flex-column justify-content-center align-items-center" id="aboutme" style="padding-top: 0; margin-top: 0; height: 100vh; overflow: hidden; background-color: #121314;">
-        <div class="container" style="margin-top: 0;">
-            <div class="row align-items-center" style="margin-bottom: 30px;">
-                <div class="col-lg-5 col-md-5 col-12 d-flex justify-content-center align-items-center" style="padding-top: 120px;">
+    <section class="aboutme d-flex flex-column justify-content-center align-items-center" id="aboutme" style="padding-top: 0; margin-top: 0; height: 100vh; background-color: #121314;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-5 col-12 d-flex justify-content-center align-items-center" style="padding-top: 70px;">
                     <div class="aboutme-photo" data-aos="fade-right" data-aos-delay="300">
                         <img src="images/aboutme-photo.jpg" alt="About Me" class="img-fluid rounded-corner" style="max-width: 75%; height: auto;">
                     </div>
                 </div>
-                <div class="col-lg-7 col-md-7 col-12" style="padding-left: 0; padding-right: 20px;">
-                    <div class="aboutme-text" data-aos="fade-left" data-aos-delay="300" style="margin-top: 100px; max-width: 100%;">
+                <div class="col-lg-7 col-md-7 col-12">
+                    <div class="aboutme-text" data-aos="fade-left" data-aos-delay="300" style="margin-top: 50px; max-width: 100%;">
                         <h2 style="text-align: left;">About Me</h2>
                         <p style="color: #cab8a4; text-align: left; line-height: 1.6; margin-bottom: 20px; font-size: 1.05rem;">
                             I'm a 21-year-old producer from Poland, I've been creating music since I turned 18—spending all my birthday money back then on my first music equipment.
@@ -196,7 +171,6 @@
                         <p style="color: #cab8a4; text-align: left; line-height: 1.6; margin-bottom: 20px; font-size: 1.05rem;">
                             I work directly with artists in the studio and also collaborate remotely with other producers and rappers through net and close industry connections.
                         </p>
-                        
                     </div>
                 </div>
             </div>
