@@ -107,8 +107,11 @@
              }
              
              .aboutme-photo img {
-                 max-width: 85% !important;
+                 max-width: 65% !important; /* Reduced size on mobile */
                  margin: 0 auto;
+                 pointer-events: none; /* Prevents interaction with the image */
+                 -webkit-touch-callout: none; /* Prevents iOS callout when tapping */
+                 user-select: none; /* Prevents selection */
              }
              
              /* Adjust column layout for mobile */
