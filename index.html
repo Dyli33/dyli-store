@@ -112,7 +112,7 @@
     </section>
 
 
-<section class="feature" id="feature">
+<section class="feature" id="feature" style="padding-bottom: 55px;">
     <div class="container">
         <div class="row">
 
@@ -123,14 +123,14 @@
 
                 <p data-aos="fade-up" data-aos-delay="200">Sign up to join the community of producers I work with. Get exclusive loops, collab opportunities, and more!</p>
 
-                <a href="#" class="btn custom-btn bg-color mt-3"  data-aos-delay="100" data-toggle="modal" data-target="#membershipForm">Sign up</a>
+                <a href="#" class="btn custom-btn bg-color mt-3 mb-2"  data-aos-delay="100" data-toggle="modal" data-target="#membershipForm">Sign up</a>
             </div>
 
             <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
                  <div class="about-working-hours">
                       <div>
-                        <h3 class="mt-4 text-white" id="producers-count" data-aos="fade-up" data-aos-delay="900">Currently, 0 Producers</h3>
-                        <p class="producers-count" data-aos="fade-up" data-aos-delay="1000">Are getting their hands on free loops</p>
+                        <h3 class="mt-4 text-white" id="producers-count" data-aos="fade-up" data-aos-delay="400">Currently, 0 Producers</h3>
+                        <p class="producers-count" data-aos="fade-up" data-aos-delay="500">Are getting their hands on free loops</p>
                       </div>
                  </div>
             </div>
@@ -303,9 +303,49 @@ fetch(`${API_URL}/count?t=${new Date().getTime()}`)
     });
 </script>
 
+<!-- Simplified Testimonials -->
+<section class="py-3" style="background-color: #171819;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-12 text-center mb-4">
+                <p class="producers-count">Couple words from my collaborators</p>
+            </div>
+            <div class="col-lg-10 col-12">
+                <div class="row">
+                    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="200">
+                        <div class="p-3 pt-2" style="border-left: 4px solid #ff3b3f; min-height: 190px;">
+                            <p class="text-white mb-2">
+                                <small style="opacity: 0.8; font-size: 1.1rem;">🎧 Yippie the Producer</small>
+                                <a href="https://www.youtube.com/@YippieTheProducer" target="_blank" style="color: #ff3b3f; margin-left: 10px; display: inline-block; vertical-align: middle;">
+                                    <i class="fa fa-youtube-play" aria-hidden="true" style="font-size: 1.8rem;"></i>
+                                </a>
+                            </p>
+                            <p class="text-light" style="font-size: 1rem;">"These sounds hit different, especially the one shots. they've got that unique feel to them."</p>
+                            <small style="color: #a0a0a0;">
+                                Established BeatStars Seller – 7.3K YouTube Subscribers
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="400">
+                        <div class="p-3 pt-2" style="border-left: 4px solid #ff3b3f; min-height: 190px;">
+                            <p class="text-white mb-2">
+                                <small style="opacity: 0.8; font-size: 1.1rem;">🎹 Wardza20k</small>
+                                <a href="https://open.spotify.com/artist/2ezG16Od6YnOUmoy9DjkxZ" target="_blank" style="color: #1DB954; margin-left: 10px; display: inline-block; vertical-align: middle;">
+                                    <i class="fa fa-spotify" aria-hidden="true" style="font-size: 1.8rem;"></i>
+                                </a>
+                            </p>
+                            <p class="text-light" style="font-size: 1rem;">"Dyli consistently delivers clean, quality sound. He's my go to collaborator and I'm locked in for the long run."</p>
+                            <small style="color: #a0a0a0;">Industry Producer – Worked with Poland's top artists (40M+ streams) and other international names like Fivio Foreign.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-     <!-- CLASS -->
+<!-- CLASS -->
 <section class="class section" id="class">
     <div class="container">
         <div class="row">
